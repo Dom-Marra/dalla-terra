@@ -20,24 +20,30 @@
                 $image = wp_get_attachment_url( $thumbnail_id );
 
                 if ( $image ) : ?>
-                    <img src="<?php echo $image ?>" alt="<?php echo $cat->name . ' thumbnail' ?>" />
+                    <img class="category-thumbnail" src="<?php echo $image ?>" alt="<?php echo $cat->name . ' thumbnail' ?>" />
             <?php endif ?> 
 
-            <h2><?php echo $category->name ?></h2>
+            <h2 class="category-name"><?php echo $category->name ?></h2>
 
             <?php if ( get_field('caption', 'product_cat_'.$category->term_id )) : ?>
-                <p><?php the_field('caption', 'product_cat_'.$category->term_id); ?></p>
+                <p class="category-caption"><?php the_field('caption', 'product_cat_'.$category->term_id); ?></p>
             <?php endif; ?>
 
             <?php if ( $category->description ) : ?>
-                <p><?php echo $category->description; ?></p>
+                <p class="category-description"><?php echo $category->description; ?></p>
             <?php endif; ?>
 
             <?php 
                 $image = get_field('secondary_image', 'product_cat_'.$category->term_id );
                 if ( !empty( $image ) && !is_front_page() ) : ?>
-                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                <img class="category-second-img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
             <?php endif; ?>
+
+            <?php 
+                $link_url = add_query_arg( 'category[]', $category->term_id, get_permalink(11))
+            ?>
+
+            <a class="category-link" href="<?php echo $link_url ?>">View All</a>
         
         </article>
     <?php endforeach;
