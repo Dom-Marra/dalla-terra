@@ -184,3 +184,16 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+//Change Block Editor To Classic Editor
+function dalla_terra_classic_editors( $use_block_editor, $post ) {
+
+    $page_ids = array( 20, 24, 111, 18, 26 );
+
+    if ( in_array( $post->ID, $page_ids ) ) {
+        return false;
+    } else {
+        return $use_block_editor;
+    }
+}
+add_filter( 'use_block_editor_for_post', 'dalla_terra_classic_editors', 10, 2 );
