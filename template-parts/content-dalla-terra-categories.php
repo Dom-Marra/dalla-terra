@@ -40,7 +40,7 @@
             <?php endif; ?>
 
             <?php 
-                $link_url = add_query_arg( 'category[]', $category->term_id, get_permalink(11))
+                $link_url = add_query_arg( 'filters', 'product_cat[' . $category->term_id . ']', get_permalink(11))
             ?>
 
             <a class="category-link" href="<?php echo $link_url ?>">View All</a>
