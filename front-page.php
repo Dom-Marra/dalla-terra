@@ -113,15 +113,18 @@ get_header();
 		<section class="about-us-banner-home">
 			<?php
 				$about_us_banner= get_field('about_us_banner');
-				if( $aboutUsBanner ): ?>
-					<div id="about-us-banner">
+				if( $about_us_banner ): ?>
+					<figure id="about-us-banner">
 
-					<img src="<?php echo esc_url( $about_us_banner['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $about_us_banner['background_image']['alt'] ); ?>" />
-					<a href="<?php echo esc_url( $about_us_banner['link']['url'] ); ?>">
-						<?php echo esc_html( $about_us_banner['button_text']); ?>
-					</a>
+						<img src="<?php echo esc_url( $about_us_banner['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $about_us_banner['background_image']['alt'] ); ?>" />
 						
-					</div>
+						<figcaption>
+							<h2><?php echo esc_html( $about_us_banner['heading'] ) ?></h2>
+							<a href="<?php echo esc_url( $about_us_banner['link']['url'] ); ?>">
+								<?php echo esc_html( $about_us_banner['button_text']); ?>
+							</a>
+						</figcaption>
+				</figure>
 					</style>
 				<?php endif; ?>
 		</section>
