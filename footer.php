@@ -12,6 +12,12 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
+
+	<nav id="social-navigation" class="social-navigation">
+					<?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
+				</nav>
+		</div><!-- .footer-menus -->
+
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'dalla-terra' ) ); ?>">
 				<?php

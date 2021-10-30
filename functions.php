@@ -50,7 +50,9 @@ if ( ! function_exists( 'dalla_terra_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'dalla-terra' ),
+				'header' => esc_html__( 'Header Menu Location', 'dalla-terra' ),
+				'social' => esc_html__( 'Social Menu Location', 'dalla-terra' ), 
+				// 'menu-1' => esc_html__( 'Primary', 'dalla-terra' ),
 			)
 		);
 
