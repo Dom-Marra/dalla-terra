@@ -150,6 +150,27 @@ function dalla_terra_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	wp_enqueue_style(
+		'swiper-styles',
+		get_template_directory_uri() . '/sass/swiper-bundle.min.css',
+		array(),
+		'7.2.0',
+	);
+	wp_enqueue_script(
+		'swiper-scripts',
+		get_template_directory_uri() . '/js/swiper-bundle.min.js',
+		array(),
+		'7.2.0',
+		true
+	);
+	wp_enqueue_script(
+		'swiper-settings',
+		get_template_directory_uri() . '/js/swiper-settings.js',
+		array( 'swiper-scripts' ),
+		_S_VERSION,
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'dalla_terra_scripts' );
 
@@ -221,5 +242,15 @@ function dalla_terra_archive_product_hooks() {
 		30,
 	);
 }
-
 add_action( 'init', 'dalla_terra_archive_product_hooks' );
+
+//Redirect to shop page instead of archive page for categories
+function dalla_terra_redirect_to_shop() {
+
+    if ( is_product_category() ) {
+		$cat_id = get_queried_object()->term_id;
+        wp_redirect( wc_get_page_permalink( 'shop' ) . '?filters=product_cat['. $cat_id .']' );
+        exit();
+    }
+}
+add_action( 'template_redirect', 'dalla_terra_redirect_to_shop');

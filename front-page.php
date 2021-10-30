@@ -71,14 +71,26 @@ get_header();
 			<?php 
 			$featured_posts = get_field('bestsellers');
 			if( $featured_posts ): ?>
-			
-				<?php foreach( $featured_posts as $post ): 
-			
-					// Setup this post for WP functions (variable must be named $post).
-					setup_postdata($post); ?>
-					<?php the_post_thumbnail() ?>
-						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				<?php endforeach; ?>
+				<h2>Bestsellers</h2>
+
+				<div class="swiper">
+					<ul class="swiper-wrapper">
+						<?php foreach( $featured_posts as $post ): setup_postdata($post); ?>
+							<li class='swiper-slide'>
+								<a href="<?php the_permalink(); ?>">
+									<?php 
+										the_post_thumbnail();
+										the_title();
+									?>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+					
+					<div class="swiper-button-prev"></div>
+                	<div class="swiper-button-next"></div>
+				</div>
+				
 				
 				<?php 
 				// Reset the global post object so that the rest of the page works correctly.
