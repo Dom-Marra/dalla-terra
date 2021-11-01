@@ -22,11 +22,15 @@ get_header();
 			if ( $banner ) : ?>
 				<section class="banner-section">
 					<img src="<?php echo esc_url( $banner['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $banner['background_image']['alt'] ); ?>" />
-					<p><?php echo  $banner['text']; ?></p>
+					<h1><?php echo  $banner['text']; ?></h1>
 				</section>
 		<?php
 		endif;
 		?>
+		<section class="contact-form-section">
+			<h2>Contact Us</h2>
+			<?php echo do_shortcode('[wpforms id="261"]'); ?>
+		</section>
 <!-- address -->
 		<?php
 			$address = get_field('address');
