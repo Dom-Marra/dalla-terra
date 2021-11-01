@@ -151,6 +151,14 @@ function dalla_terra_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
+	wp_enqueue_script(
+		'expander-scripts',
+		get_template_directory_uri() . '/js/expander.js',
+		array( ),
+		_S_VERSION,
+		true
+	);
+
 	wp_enqueue_style(
 		'swiper-styles',
 		get_template_directory_uri() . '/sass/swiper-bundle.min.css',
@@ -208,6 +216,11 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
+/**
+* Custom Post Types & Taxonomies
+*/
+require get_template_directory() . '/inc/cpt-taxonomy.php';
+
 //Change Block Editor To Classic Editor
 function dalla_terra_classic_editors( $use_block_editor, $post ) {
 
@@ -254,3 +267,16 @@ function dalla_terra_redirect_to_shop() {
     }
 }
 add_action( 'template_redirect', 'dalla_terra_redirect_to_shop');
+
+//Create ACFs for Locations archive page
+function dalla_terra_create_acf_pages() {
+	if( function_exists('acf_add_options_page') ) {
+	  acf_add_options_sub_page(array(
+		'page_title'      => 'Locations Archive Settings', /* Use whatever title you want */
+		
+		'parent_slug'     => 'edit.php?post_type=dt-locations', /* Change "services" to fit your situation */
+		'capability' => 'manage_options'
+	  ));
+	}
+  }
+  add_action('init', 'dalla_terra_create_acf_pages');
