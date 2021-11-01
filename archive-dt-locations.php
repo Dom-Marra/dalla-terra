@@ -57,7 +57,7 @@ get_header();
 
 							$link = home_url( $wp->request );
 							
-							if ($location_sort === 'all') {
+							if ($location_sort === 'all' || $location_sort != $cat->term_id) {
 								$link = add_query_arg( 'location', $cat->term_id, home_url( $wp->request ) );
 							}
 							
@@ -74,9 +74,8 @@ get_header();
 			while ( have_posts() ) : 
 
 				the_post();
-				$terms = get_the_terms( $post->ID, 'dt-location-category' );
 
-				if ($location_sort === 'all' || in_array($location_sort, $terms)) :
+				if ($location_sort === 'all' || has_term($location_sort, 'dt-location-category', $post)) :
 			
 			?>
 
