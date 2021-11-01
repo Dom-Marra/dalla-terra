@@ -44,7 +44,7 @@ get_header();
 				<div id="custom-cta-content">
 
 				<img src="<?php echo esc_url( $custom_cta['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $custom_cta['background_image']['alt'] ); ?>" />
-				<a href="<?php echo esc_url( $custom_cta['link']['url'] ); ?>">
+				<a href="<?php echo esc_url( $custom_cta['link'] ); ?>">
 					<?php echo esc_html( $custom_cta['button_text']); ?>
 				</a>
 					
@@ -120,7 +120,7 @@ get_header();
 						
 						<figcaption>
 							<h2><?php echo esc_html( $about_us_banner['heading'] ) ?></h2>
-							<a href="<?php echo esc_url( $about_us_banner['link']['url'] ); ?>">
+							<a href="<?php echo esc_url( $about_us_banner['link'] ); ?>">
 								<?php echo esc_html( $about_us_banner['button_text']); ?>
 							</a>
 						</figcaption>
