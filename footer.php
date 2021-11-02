@@ -15,7 +15,7 @@
 
 	<nav id="social-navigation" class="social-navigation">
 					<?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
-				</nav>
+	</nav>
 		</div><!-- .footer-menus -->
 
 		<div class="site-info">

@@ -118,9 +118,12 @@ get_header();
 					</a>
 						
 				<?php endif; ?>
+                
+        <nav id="social-navigation" class="social-navigation">
+                <?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
+	    </nav>
         </section>
-			
-
+		
         <?php endwhile; // End of the loop.
 		?>
 
