@@ -159,6 +159,14 @@ function dalla_terra_scripts() {
 		true
 	);
 
+	wp_enqueue_script(
+		'location-scripts',
+		get_template_directory_uri() . '/js/locations-filtering.js',
+		array( ),
+		_S_VERSION,
+		true
+	);
+
 	wp_enqueue_style(
 		'swiper-styles',
 		get_template_directory_uri() . '/sass/swiper-bundle.min.css',
