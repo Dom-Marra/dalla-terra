@@ -159,13 +159,15 @@ function dalla_terra_scripts() {
 		true
 	);
 
-	wp_enqueue_script(
-		'location-scripts',
-		get_template_directory_uri() . '/js/locations-filtering.js',
-		array( ),
-		_S_VERSION,
-		true
-	);
+	if (is_post_type_archive('dt-locations')) :
+		wp_enqueue_script(
+			'location-scripts',
+			get_template_directory_uri() . '/js/locations-filtering.js',
+			array( ),
+			_S_VERSION,
+			true
+		);
+	endif;
 
 	wp_enqueue_style(
 		'swiper-styles',
