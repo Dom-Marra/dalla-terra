@@ -53,16 +53,9 @@ get_header();
 						]);
 
 						foreach ($categories as $cat) : 
-							global $wp;
-
-							$link = home_url( $wp->request );
-							
-							if ($location_sort === 'all' || $location_sort != $cat->term_id) {
-								$link = add_query_arg( 'location', $cat->term_id, home_url( $wp->request ) );
-							}
 							
 						?>
-							<a href="<?php echo esc_url($link) ?>"><?php echo $cat->name; ?></a>
+							<button class="location-filter" data-location="<?php echo $cat->term_id ?>"><?php echo $cat->name; ?></button>
 						<?php endforeach; ?>
 				</nav>
 			</section>
@@ -71,32 +64,32 @@ get_header();
 
 			echo do_shortcode('[leaflet-map fitbounds]');
 
-			while ( have_posts() ) : 
+			while ( have_posts() ) : the_post(); 
+				$terms = get_the_terms($post->ID, 'dt-location-category')
+				
 
-				the_post();
-
-				if ($location_sort === 'all' || has_term($location_sort, 'dt-location-category', $post)) :
-			
 			?>
 
-				<section class="expander location">
+
+				<section class="expander location" 
+						data-locations=
+						<?php 	
+							$last_key = end(array_keys($terms));
+
+							echo "[";
+							foreach($terms as $key => $term) 
+								echo $term->term_id;
+								echo $key !== $last_key ? ',' : ''; 
+							echo "]";
+						?>
+					>
 					<h2><?php the_title() ?></h2>
 					
 					<?php
 						$address = get_field('address');
 						$phone = get_field('phone_number');
-						$lat = get_field('latitude');
-						$lng = get_field('longitude');
 
-						if ($address && $lat && $lng) :
-							echo do_shortcode(
-								'[leaflet-marker lat='. $lat .' lng='. $lng .']' . 
-								get_the_title() . '<br /> <br />' .
-								str_replace(array("\r", "\n"), '', $address) . 
-								'[/leaflet-marker]');
-						endif;
-
-						if ($address): ?>
+						if ($address || $phone): ?>
 							<address>
 								<?php echo $address ?>
 								<?php if ($phone) : ?>
@@ -124,7 +117,7 @@ get_header();
 					<?php endif; ?>
 					<button class="expand-btn">See More</button>
 				</section>
-			<?php endif; endwhile; 
+			<?php endwhile; 
 		endif; ?>
 
 	</main><!-- #main -->
