@@ -21,8 +21,8 @@ get_header();
 			$banner = get_field('banner');
 			if ( $banner ) : ?>
 				<section class="banner-section">
-					<img src="<?php echo esc_url( $banner['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $banner['background_image']['alt'] ); ?>" />
-					<h1><?php echo  $banner['text']; ?></h1>
+				<?php echo wp_get_attachment_image( $banner['background_image'], 'full');?>
+				<h1><?php echo  $banner['text']; ?></h1>
 				</section>
 		<?php
 		endif;
