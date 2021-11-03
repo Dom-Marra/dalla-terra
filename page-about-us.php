@@ -24,10 +24,9 @@ get_header();
         <section class="about-us-banner">
             <?php
             $aboutUsBanner = get_field('banner');
-            $size = 'medium';
 				if( $aboutUsBanner ): ?>
 					<div id="custom-cta-content">
-                        <?php echo wp_get_attachment_image($aboutUsBanner, $size ); ?>
+                        <?php echo wp_get_attachment_image($aboutUsBanner['background_image'], 'full' ); ?>
                         <h2><?php echo $aboutUsBanner['text']; ?></h2>
 					</div>
 				<?php endif; ?>
@@ -54,7 +53,7 @@ get_header();
                                 <?php foreach( $images as $image ): ?>
                                     <li>
                                         <a href="<?php echo $image['url']; ?>">
-                                        <?php echo wp_get_attachment_image($image, $size ); ?>
+                                        <?php echo wp_get_attachment_image($image, 'medium' ); ?>
                                         </a>
                                         <p><?php echo $image['caption']; ?></p>
                                     </li>
@@ -94,7 +93,7 @@ get_header();
                                 <?php foreach( $images as $image ): ?>
                                     <li>
                                         <a href="<?php echo $image['url']; ?>">
-                                            <?php echo wp_get_attachment_image($image, $size ); ?>
+                                            <?php echo wp_get_attachment_image($image, 'medium' ); ?>
                                         </a>
                                         <p><?php echo $image['caption']; ?></p>
                                     </li>
