@@ -244,40 +244,6 @@ function dalla_terra_classic_editors( $use_block_editor, $post ) {
 }
 add_filter( 'use_block_editor_for_post', 'dalla_terra_classic_editors', 10, 2 );
 
-//Alter the hooks on the archive product template
-function dalla_terra_archive_product_hooks() {
-
-	remove_action(
-		'woocommerce_before_shop_loop',
-		'woocommerce_output_all_notices',
-		10,
-	);
-
-	remove_action(
-		'woocommerce_before_shop_loop',
-		'woocommerce_result_count',
-		20,
-	);
-
-	remove_action(
-		'woocommerce_before_shop_loop',
-		'woocommerce_catalog_ordering',
-		30,
-	);
-}
-add_action( 'init', 'dalla_terra_archive_product_hooks' );
-
-//Redirect to shop page instead of archive page for categories
-function dalla_terra_redirect_to_shop() {
-
-    if ( is_product_category() ) {
-		$cat_id = get_queried_object()->term_id;
-        wp_redirect( wc_get_page_permalink( 'shop' ) . '?filters=product_cat['. $cat_id .']' );
-        exit();
-    }
-}
-add_action( 'template_redirect', 'dalla_terra_redirect_to_shop');
-
 //Create ACFs for Locations archive page
 function dalla_terra_create_acf_pages() {
 	if( function_exists('acf_add_options_page') ) {

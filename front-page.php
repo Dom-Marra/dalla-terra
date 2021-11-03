@@ -37,31 +37,31 @@ get_header();
 		</section>
 
 
-		</section class="custom-cta-home"> 
+		<section class="custom-cta-home"> 
 			<?php
 			$custom_cta = get_field('custom_call_to_action');
 			if( $custom_cta ): ?>
 				<div id="custom-cta-content">
-
-				<img src="<?php echo esc_url( $custom_cta['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $custom_cta['background_image']['alt'] ); ?>" />
-				<a href="<?php echo esc_url( $custom_cta['link'] ); ?>">
-					<?php echo esc_html( $custom_cta['button_text']); ?>
-				</a>
+					<?php echo wp_get_attachment_image( $custom_cta['background_image'], 'full' ); ?>
+					
+					<a href="<?php echo esc_url( $custom_cta['link'] ); ?>">
+						<?php echo esc_html( $custom_cta['button_text']); ?>
+					</a>
 					
 				</div>
 			<?php endif; ?>
-		<section>
+		</section>
 
 		<section class="view-shop-cta-home">
 			<?php
-				$view_shop_CTA= get_field('view_shop_cta');
-				if( $viewShopCTA ): ?>
+				$view_shop_CTA = get_field('view_shop_cta');
+				if( $view_shop_CTA ): ?>
 					<div id="custom-cta-content">
-
-					<img src="<?php echo esc_url( $view_shop_CTA['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $view_shop_CTA['background_image']['alt'] ); ?>" />
-					<a href="<?php echo esc_url( $view_shop_CTA['link']['url'] ); ?>">
-						<?php echo esc_html( $view_shop_CTA['button_text']); ?>
-					</a>
+						<?php echo wp_get_attachment_image( $view_shop_CTA['background_image'], 'full' ); ?>
+						
+						<a href="<?php echo esc_url( $view_shop_CTA['link']['url'] ); ?>">
+							<?php echo esc_html( $view_shop_CTA['button_text']); ?>
+						</a>
 						
 					</div>
 			<?php endif; ?>
@@ -112,11 +112,11 @@ get_header();
 
 		<section class="about-us-banner-home">
 			<?php
-				$about_us_banner= get_field('about_us_banner');
+				$about_us_banner = get_field('about_us_banner');
 				if( $about_us_banner ): ?>
 					<figure id="about-us-banner">
 
-						<img src="<?php echo esc_url( $about_us_banner['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $about_us_banner['background_image']['alt'] ); ?>" />
+					<?php echo wp_get_attachment_image( $about_us_banner['background_image'], 'full' ); ?>
 						
 						<figcaption>
 							<h2><?php echo esc_html( $about_us_banner['heading'] ) ?></h2>
