@@ -24,12 +24,12 @@ get_header();
         <section class="about-us-banner">
             <?php
             $aboutUsBanner = get_field('banner');
+            $size = 'medium';
 				if( $aboutUsBanner ): ?>
 					<div id="custom-cta-content">
-                        <img src="<?php echo esc_url( $aboutUsBanner['background_image']['url'] ); ?>" alt="<?php echo esc_attr( $aboutUsBanner['background_image']['alt'] ); ?>" />
+                        <?php echo wp_get_attachment_image($aboutUsBanner, $size ); ?>
                         <h2><?php echo $aboutUsBanner['text']; ?></h2>
 					</div>
-					</style>
 				<?php endif; ?>
         </section>
 
@@ -54,7 +54,7 @@ get_header();
                                 <?php foreach( $images as $image ): ?>
                                     <li>
                                         <a href="<?php echo $image['url']; ?>">
-                                             <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" />
+                                        <?php echo wp_get_attachment_image($image, $size ); ?>
                                         </a>
                                         <p><?php echo $image['caption']; ?></p>
                                     </li>
@@ -94,7 +94,7 @@ get_header();
                                 <?php foreach( $images as $image ): ?>
                                     <li>
                                         <a href="<?php echo $image['url']; ?>">
-                                             <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" />
+                                            <?php echo wp_get_attachment_image($image, $size ); ?>
                                         </a>
                                         <p><?php echo $image['caption']; ?></p>
                                     </li>
@@ -114,7 +114,7 @@ get_header();
 				$shopLink= get_field('link');
 				if( $shopLink ): ?>
 					<a href="<?php echo esc_url( $shopLink['link']['url'] ); ?>">
-						<button><?php echo esc_html( $shopLink['text']); ?></button>
+						<?php echo esc_html( $shopLink['text']); ?>
 					</a>
 						
 				<?php endif; ?>
