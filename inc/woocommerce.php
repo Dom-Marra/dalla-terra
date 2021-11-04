@@ -246,8 +246,24 @@ function dalla_terra_archive_product_hooks() {
 		'woocommerce_catalog_ordering',
 		30,
 	);
+	
+	add_action(
+		'woocommerce_after_shop_loop_item',
+		function () { 
+			$categories = get_the_terms( $post->ID, 'product_cat' );	
+
+			if (!empty($categories)) :
+				$cat = $categories[0];
+				$bg_colour = get_field('product_colour', 'product_cat_'.$cat->term_id ); ?>
+
+				<div class="product-bg" style="background-color: <?php echo $bg_colour; ?>"></div>
+			<?php endif; 
+		},
+		30
+	);
 }
 add_action( 'init', 'dalla_terra_archive_product_hooks' );
+
 
 //Redirect to shop page instead of archive page for categories
 function dalla_terra_redirect_to_shop() {
