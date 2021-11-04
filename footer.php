@@ -13,24 +13,40 @@
 
 	<footer id="colophon" class="site-footer">
 
-	<nav id="social-navigation" class="social-navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
-	</nav>
-		</div><!-- .footer-menus -->
+		<nav id="footer-navigation">
+			<?php 
+				wp_nav_menu( 
+					array( '
+						theme_location' => 'footer',
+						'depth' 		=> 1
+					)	
+				); 
+			?>
+		</nav>
 
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'dalla-terra' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'dalla-terra' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'dalla-terra' ), 'dalla-terra', '<a href="https://dallaterra.bcitwebdeveloper.ca/">FW28</a>' );
-				?>
-		</div><!-- .site-info -->
+		<?php
+			$address = get_field('address', '24');
+			$email = get_field('email', '24');
+			$phone = get_field('phone_number', '24');
+			if ( $address || $email || $phone ):
+		?>
+			<address class="contact-information">
+				<?php if ($address) : ?>
+					<p class="address"><?php echo $address; ?></p>
+				<?php endif; ?>
+				<?php if ($email) : ?>
+					<p class="email"><?php echo $email; ?></p>
+				<?php endif; ?>
+				<?php if ($phone) : ?>
+					<p class="phone"><?php echo $phone; ?></p>
+				<?php endif; ?>
+			</address>
+		<?php endif; ?>
+
+		<nav id="social-navigation" class="social-navigation">
+			<?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
+		</nav>
+
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

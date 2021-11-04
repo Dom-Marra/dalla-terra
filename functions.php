@@ -52,7 +52,7 @@ if ( ! function_exists( 'dalla_terra_setup' ) ) :
 			array(
 				'header' => esc_html__( 'Header Menu Location', 'dalla-terra' ),
 				'social' => esc_html__( 'Social Menu Location', 'dalla-terra' ), 
-				// 'menu-1' => esc_html__( 'Primary', 'dalla-terra' ),
+				'footer' => esc_html__( 'Footer Menu Location', 'dalla-terra' ),
 			)
 		);
 
