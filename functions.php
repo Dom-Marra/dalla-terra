@@ -176,7 +176,7 @@ function dalla_terra_scripts() {
 		'7.2.0',
 	);
 	wp_enqueue_style(
-        'fwd-google-fonts', //handle
+        'dt-google-fonts', //handle
         'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Merriweather:ital,wght@0,400;0,700;1,300;1,400;1,700&display=swap', //src
         array(),            //dependencies
         null                //google fonts need to be null
