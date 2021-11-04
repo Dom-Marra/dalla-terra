@@ -195,6 +195,20 @@ function dalla_terra_scripts() {
 		_S_VERSION,
 		true
 	);
+	wp_enqueue_script(
+		'feather-icon-scripts',
+		get_template_directory_uri() . '/js/feather.min.js',
+		array(),
+		'4.28.0',
+		true
+	);
+	wp_enqueue_script(
+		'feather-icon-scripts-init',
+		get_template_directory_uri() . '/js/feather-init.js',
+		array(),
+		_S_VERSION,
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'dalla_terra_scripts' );
 
