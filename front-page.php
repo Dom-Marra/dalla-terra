@@ -75,13 +75,21 @@ get_header();
 
 				<div class="swiper">
 					<ul class="swiper-wrapper">
-						<?php foreach( $featured_posts as $post ): setup_postdata($post); ?>
+						<?php foreach( $featured_posts as $post ): 
+							setup_postdata($post); 
+							$categories = get_the_terms( $post->ID, 'product_cat' );	
+						?>
 							<li class='swiper-slide'>
 								<a href="<?php the_permalink(); ?>">
-									<?php 
-										the_post_thumbnail();
-										the_title();
-									?>
+									<?php the_post_thumbnail(); ?>
+									<p class="view-product-cta">View Product</p>
+									<?php
+										if (!empty($categories)) :
+											$cat = $categories[0];
+											$bg_colour = get_field('product_colour', 'product_cat_'.$cat->term_id ); ?>
+			
+											<div class="product-bg" style="background-color: <?php echo $bg_colour; ?>"></div>
+									<?php endif; ?>
 								</a>
 							</li>
 						<?php endforeach; ?>

@@ -13,15 +13,18 @@
         'include'       => empty($args) ? null : $args      //Include specified categories
     ]);
 
-    foreach ($categories as $category) : ?>
-        <article class="category-article">
+    foreach ($categories as $category) : 
+        $bg_colour = get_field('card_colour', 'product_cat_'.$category->term_id );
+    ?>
+        <article class="category-article" style="background-color: <?php echo $bg_colour  ?>">
             <?php 
                 $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
-                $image = wp_get_attachment_url( $thumbnail_id );
 
-                if ( $image ) : ?>
-                    <img class="category-thumbnail" src="<?php echo $image ?>" alt="<?php echo $cat->name . ' thumbnail' ?>" />
-            <?php endif ?> 
+                if ( $thumbnail_id) : 
+                    echo wp_get_attachment_image( $thumbnail_id, 'full' );
+
+                endif;
+            ?>
 
             <h2 class="category-name"><?php echo $category->name ?></h2>
 
@@ -31,12 +34,6 @@
 
             <?php if ( $category->description ) : ?>
                 <p class="category-description"><?php echo $category->description; ?></p>
-            <?php endif; ?>
-
-            <?php 
-                $image = get_field('secondary_image', 'product_cat_'.$category->term_id );
-                if ( !empty( $image ) && !is_front_page() ) : ?>
-                <img class="category-second-img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
             <?php endif; ?>
 
             <?php 
