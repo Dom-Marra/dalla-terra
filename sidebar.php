@@ -7,11 +7,11 @@
  * @package Dalla_Terra
  */
 
-if ( ! is_active_sidebar( 'filters' ) ) {
-	return;
-}
+if ( is_active_sidebar( 'filters' )  && is_shop()) :
 ?>
 
 <aside id="secondary" class="widget-area">
 	<?php dynamic_sidebar( 'filters' ); ?>
 </aside><!-- #secondary -->
+
+<?php endif; ?>
