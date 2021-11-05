@@ -28,26 +28,20 @@
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$dalla_terra_description = get_bloginfo( 'description', 'display' );
-			if ( $dalla_terra_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $dalla_terra_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
+			if (has_custom_logo()) : 
+				the_custom_logo();
+			else : ?>
+				<h1 class="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+						<?php bloginfo( 'name' ); ?>
+					</a>
+				</h1>
+			<?php endif;?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'dalla-terra' ); ?></button>
+		<nav id="primary-navigation" class="main-navigation">
 			<?php
+
 			wp_nav_menu(
 				array(
 					'theme_location' => 'header',
@@ -55,5 +49,18 @@
 				)
 			);
 			?>
-		</nav><!-- #site-navigation -->
+		</nav><!-- #site-main-navigation -->
+
+		<nav id="hamburger-navigation" class="hamburger-navigation">
+			<button class="menu-toggle open" aria-label="open menu" aria-controls="hamburger-menu" aria-expanded="false"><i data-feather="menu"></i></button>
+			<button class="menu-toggle close" aria-label="close menu" aria-controls="hamburger-menu" aria-expanded="false"><i data-feather="x"></i></button>
+
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'hamburger',
+				)
+			);
+			?>
+		</nav><!-- #site-hamburger-navigation -->
 	</header><!-- #masthead -->

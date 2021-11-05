@@ -50,9 +50,10 @@ if ( ! function_exists( 'dalla_terra_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'header' => esc_html__( 'Header Menu Location', 'dalla-terra' ),
-				'social' => esc_html__( 'Social Menu Location', 'dalla-terra' ), 
-				'footer' => esc_html__( 'Footer Menu Location', 'dalla-terra' ),
+				'header' 	=> esc_html__( 'Header Menu Location', 'dalla-terra' ),
+				'hamburger' => esc_html__( 'Header Hamburger Menu Location', 'dalla-terra' ),
+				'social' 	=> esc_html__( 'Social Menu Location', 'dalla-terra' ), 
+				'footer' 	=> esc_html__( 'Footer Menu Location', 'dalla-terra' ),
 			)
 		);
 
@@ -276,3 +277,18 @@ function dalla_terra_create_acf_pages() {
 	}
   }
   add_action('init', 'dalla_terra_create_acf_pages');
+
+add_filter('wp_nav_menu_items','add_search_box_to_menu', 10, 2);
+function add_search_box_to_menu( $items, $args ) {
+    if( $args->theme_location == 'header' ) :
+
+		return $items 	. '<li class="menu-item">'
+						. '<button id="search" class="search" aria-label="search"><i data-feather="search"></i></button>'
+						. get_product_search_form($echo)
+						. '</li>';
+
+	endif;
+        
+ 
+    return $items;
+}

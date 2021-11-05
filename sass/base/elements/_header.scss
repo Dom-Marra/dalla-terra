@@ -1,0 +1,46 @@
+.site-header {
+    position: fixed;
+    z-index: 800;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    border-bottom: 3px solid grey;
+
+    .main-navigation {
+        margin-left: auto;
+    }
+
+    .hamburger-navigation,
+    .main-navigation {
+        width: auto;
+    }
+
+    .custom-logo-link img {
+        height: 3rem;
+        margin: 0 1.5rem;
+        width: auto;
+        transform: rotate(35deg);
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 33%;
+        border-bottom: 3px solid;
+        bottom: -3px;
+    }
+    
+    &::before {
+        right: 0;
+        border-color: #853540;
+    }
+
+    &::after {
+        left: 0;
+        border-color: #154837;
+    }
+}
