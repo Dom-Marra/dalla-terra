@@ -1,6 +1,7 @@
-.no-sidebar {
+.no-sidebar:not(.woocommerce-shop) {
 
 	.site {
+		margin-top: 8rem;
 		display: grid;
 		grid-template-columns: auto;
 		grid-template-areas:

@@ -58,6 +58,16 @@ function dalla_terra_woocommerce_scripts() {
 		}';
 
 	wp_add_inline_style( 'dalla-terra-woocommerce-style', $inline_font );
+
+	if (is_shop()) {
+		wp_enqueue_script(
+			'filter-scripts',
+			get_template_directory_uri() . '/js/filter-toggle.js',
+			array(),
+			_S_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'dalla_terra_woocommerce_scripts' );
 
@@ -247,20 +257,6 @@ function dalla_terra_archive_product_hooks() {
 		30,
 	);
 	
-	add_action(
-		'woocommerce_after_shop_loop_item',
-		function () { 
-			$categories = get_the_terms( $post->ID, 'product_cat' );	
-
-			if (!empty($categories)) :
-				$cat = $categories[0];
-				$bg_colour = get_field('product_colour', 'product_cat_'.$cat->term_id ); ?>
-
-				<div class="product-bg" style="background-color: <?php echo $bg_colour; ?>"></div>
-			<?php endif; 
-		},
-		30
-	);
 }
 add_action( 'init', 'dalla_terra_archive_product_hooks' );
 
@@ -275,3 +271,52 @@ function dalla_terra_redirect_to_shop() {
     }
 }
 add_action( 'template_redirect', 'dalla_terra_redirect_to_shop');
+
+function add_filter_button() {
+	if (is_shop()) :
+		add_action(
+			'woocommerce_after_shop_loop_item',
+			function () { 
+				$categories = get_the_terms( $post->ID, 'product_cat' );	
+	
+				if (!empty($categories)) :
+					$cat = $categories[0];
+					$bg_colour = get_field('product_colour', 'product_cat_'.$cat->term_id ); ?>
+	
+					<div class="product-bg" style="background-color: <?php echo $bg_colour; ?>"></div>
+				<?php endif; 
+			},
+			30
+		);
+	
+		remove_action(
+			'woocommerce_before_main_content',
+			'woocommerce_breadcrumb',
+			20
+		);
+	
+		add_action(
+			'woocommerce_before_main_content',
+			function () { ?>
+				<div class="breadcrumb-container">
+					<button id="open-filters" class="open-filters" aria-label="open filters"><i data-feather="filter"></i></button>
+			<?php },
+			15
+		);
+	
+		add_action(
+			'woocommerce_before_main_content',
+			'woocommerce_breadcrumb',
+			16
+		);
+	
+		add_action(
+			'woocommerce_before_main_content',
+			function () { ?>
+				</div>
+			<?php },
+			17
+		);
+	endif;
+}
+add_action( 'template_redirect', 'add_filter_button');
