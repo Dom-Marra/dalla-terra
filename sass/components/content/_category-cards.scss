@@ -1,0 +1,37 @@
+//Home Page Category Cards 
+.category-article{
+    color: rgb(226, 226, 137);
+    padding: 2rem 3rem;
+    margin: 1rem 0;
+    
+    img{
+        width: 18rem;
+
+    }
+    .category-name{
+        font-size: 1rem;  
+        font-weight: lighter; 
+
+     }
+     .category-caption{
+         font-size: 2rem;
+         font-weight: bold;
+     }
+     .category-link{
+         border: black 1px solid;
+         max-width: 10rem;
+         background-color: white;
+         padding: .5rem 2rem;
+         display: block;
+         text-align: center;
+         margin: 0 auto;
+     }
+}
+
+@media (min-width: $desktop){
+    .categories-section-home{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-gap: 1rem;
+    }
+}
