@@ -50,9 +50,10 @@ if ( ! function_exists( 'dalla_terra_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'header' => esc_html__( 'Header Menu Location', 'dalla-terra' ),
-				'social' => esc_html__( 'Social Menu Location', 'dalla-terra' ), 
-				'footer' => esc_html__( 'Footer Menu Location', 'dalla-terra' ),
+				'header' 	=> esc_html__( 'Header Menu Location', 'dalla-terra' ),
+				'hamburger' => esc_html__( 'Header Hamburger Menu Location', 'dalla-terra' ),
+				'social' 	=> esc_html__( 'Social Menu Location', 'dalla-terra' ), 
+				'footer' 	=> esc_html__( 'Footer Menu Location', 'dalla-terra' ),
 			)
 		);
 
@@ -124,17 +125,7 @@ add_action( 'after_setup_theme', 'dalla_terra_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function dalla_terra_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Filters', 'dalla-terra' ),
-			'id'            => 'filters',
-			'description'   => esc_html__( 'Add widgets here.', 'dalla-terra' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+	
 }
 add_action( 'widgets_init', 'dalla_terra_widgets_init' );
 
@@ -267,12 +258,38 @@ add_filter( 'use_block_editor_for_post', 'dalla_terra_classic_editors', 10, 2 );
 //Create ACFs for Locations archive page
 function dalla_terra_create_acf_pages() {
 	if( function_exists('acf_add_options_page') ) {
-	  acf_add_options_sub_page(array(
-		'page_title'      => 'Locations Archive Settings', /* Use whatever title you want */
-		
-		'parent_slug'     => 'edit.php?post_type=dt-locations', /* Change "services" to fit your situation */
-		'capability' => 'manage_options'
-	  ));
+	  acf_add_options_sub_page(
+			array(
+				'page_title'    => 'Locations Archive Settings',
+				
+				'parent_slug'   => 'edit.php?post_type=dt-locations',
+				'capability' 	=> 'manage_options'
+			)
+		);
+
+		acf_add_options_sub_page(
+			array(
+				'page_title'    => 'Filter Settings',
+				
+				'parent_slug'   => 'edit.php?post_type=product',
+				'capability' 	=> 'manage_options'
+			)
+		);
 	}
   }
   add_action('init', 'dalla_terra_create_acf_pages');
+
+add_filter('wp_nav_menu_items','add_search_box_to_menu', 10, 2);
+function add_search_box_to_menu( $items, $args ) {
+    if( $args->theme_location == 'header' ) :
+
+		return $items 	. '<li class="menu-item">'
+						. '<button id="search" class="search" aria-label="search"><i data-feather="search"></i></button>'
+						. get_product_search_form($echo)
+						. '</li>';
+
+	endif;
+        
+ 
+    return $items;
+}
