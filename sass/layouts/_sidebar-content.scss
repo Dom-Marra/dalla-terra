@@ -1,10 +1,18 @@
 .site {
+	margin-top: 8rem;
 	display: grid;
-	grid-template-columns: ($size__site-sidebar) auto;
 	grid-template-areas:
 		"header header"
-		"sidebar main"
+		"main main"
 		"footer footer";
+
+	@media screen and (min-width: 75em) {
+		grid-template-columns: minmax(20rem, 320px) auto;
+		grid-template-areas:
+			"header header"
+			"sidebar main"
+			"footer footer";
+	}
 }
 
 .site-header {
@@ -14,10 +22,83 @@
 .site-main {
 	grid-area: main;
 	overflow: hidden; /* Resolves issue with <pre> elements forcing full width. */
+	padding-left: 1rem;
 }
 
 .widget-area {
-	grid-area: sidebar;
+	position: fixed;
+	background-color: #fff;
+	width: 20rem;
+	max-width: 95%;
+	height: calc(100% - 6.25rem);
+	top: 6.25rem;
+	left: 0;
+	transform: translateX(-100%);
+
+	&.opened,
+	&.closed {
+		transition: transform 0.25s ease-in-out;
+	}
+
+	&.opened  {
+		transform: translateX(0);
+	}
+
+	.sidebar-wrapper {
+		display: flex;
+        flex-direction: column;
+		height: 100%;
+		padding: 0 1.5rem;
+		border-right: 1px solid transparentize(#000, 0.5);
+		overflow-y: auto;
+
+        .close-filters {
+            align-self: flex-end;
+            border: none;
+            background-color: transparent;
+            padding: 1rem 0;
+            font-size: 1rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .filter-controls {
+            display: flex;
+			align-items: center;
+			margin-top: auto;
+			margin-bottom: 1rem;
+
+			.berocket_single_filter_widget {
+				flex: 1;
+
+				.bapf_sfilter {
+					margin-bottom: 0;
+				}
+
+				&:first-child {
+					margin-right: 1rem;
+				}
+			}
+        }
+	}
+
+	@media screen and (min-width: 75em) {
+		grid-area: sidebar;
+		position: static;
+		transform: translateX(0);
+
+		.sidebar-wrapper {
+			position: sticky;
+			top: 8rem;
+			height: calc(100vh - 10rem);
+
+			.close-filters { 
+				display: none;
+			}
+		}
+	}
 }
 
 .site-footer {
