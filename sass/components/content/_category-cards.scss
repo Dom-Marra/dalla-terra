@@ -5,7 +5,7 @@
     margin: 1rem 0;
     
     img{
-        width: 10rem;
+        width: 50%;
     }
     .category-name{
         font-size: 1rem;  
@@ -25,6 +25,14 @@
          text-align: center;
          margin: 0 auto;
      }
+}
+.page-id-111{
+    .category-article{
+        .card-details{
+            display: grid;
+            grid-template-columns: 60% 40%;
+        }
+    }
 }
 
 @media (min-width: $desktop){
