@@ -5,4 +5,89 @@
 	select {
 		max-width: 100%;
 	}
+
+	&.widget_text {
+		p {
+			margin: 0;
+			padding-top: 1rem;
+		}
+	}
+}
+
+.berocket_single_filter_widget {
+
+	ul {
+		padding-left: 0.25rem;
+	}
+
+	button {
+		border: 1px solid black;
+		border-radius: 0;
+		background-color: transparent;
+		width: 100%;
+		padding: 1rem 0.75rem;
+	}
+
+	
+	.irs-bar,
+	.irs-handle i:first-child {
+		background-color: $header_text_color;
+	}
+
+	.irs-handle:hover i:first-child,
+	.irs--flat .state_hover i:first-child {
+		background-color: darken($header_text_color, 10%);
+		cursor: pointer;
+	}
+
+	.irs-line {
+		border-radius: 0;
+	}
+
+	.irs-to,
+	.irs-from,
+	.irs-single{
+		background-color: $header_text_color;
+		
+
+		&::before {
+			border-top-color: $header_text_color;
+		}
+	}
+
+	.irs-to,
+	.irs-from,
+	.irs-max,
+	.irs-min,
+	.irs-single {
+		font-size: 0.8rem;
+		border-radius: 0;
+	}
+
+	.bapf_hideckbox li input:checked+label,
+	.bapf_hideckbox li input:checked+label:hover,
+	.bapf_hideckbox li label:hover {
+		color: $header_text_color;
+
+		.fa-star-o {
+			color: lighten($header_text_color, 15%);
+		}
+	}
+
+	.bapf_hideckbox li label {
+		color: #222;
+
+		.fa-star-o {
+			color: lighten(#222, 20%);
+		}
+	}
+
+	.fa-star-o::before {
+		content: "\f005";
+	}
+
+	.fa-star,
+	.fa-star-o {
+		font-size: 1.15rem;
+	}
 }
