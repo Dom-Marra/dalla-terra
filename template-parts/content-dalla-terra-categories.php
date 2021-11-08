@@ -17,14 +17,7 @@
         $bg_colour = get_field('card_colour', 'product_cat_'.$category->term_id );
     ?>
         <article class="category-article" style="background-color: <?php echo $bg_colour  ?>">
-            <?php 
-                $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
-
-                if ( $thumbnail_id) : 
-                    echo wp_get_attachment_image( $thumbnail_id, 'full' );
-
-                endif;
-            ?>
+            
 
             <h2 class="category-name"><?php echo $category->name ?></h2>
 
@@ -32,9 +25,23 @@
                 <p class="category-caption"><?php the_field('caption', 'product_cat_'.$category->term_id); ?></p>
             <?php endif; ?>
 
-            <?php if ( $category->description ) : ?>
-                <p class="category-description"><?php echo $category->description; ?></p>
-            <?php endif; ?>
+            <div class="card-details">
+            
+                <?php if ( $category->description ) : ?>
+                    <p class="category-description"><?php echo $category->description; ?></p>
+                <?php endif; ?>
+
+                <?php 
+                    $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
+
+                    if ( $thumbnail_id && !is_front_page()) : 
+                        echo wp_get_attachment_image( $thumbnail_id, 'full' );
+
+                    endif;
+                ?>
+
+            </div>
+
 
             <?php 
                 $link_url = add_query_arg( 'filters', 'product_cat[' . $category->term_id . ']', get_permalink(11))

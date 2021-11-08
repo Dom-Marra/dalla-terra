@@ -20,16 +20,12 @@ get_header();
 						<h1><?php echo get_field('title', 'option'); ?></h1>
 					<?php else : ?>
 						<h1><?php echo 'Locations'; ?></h1>
-				<?php endif; ?>
+				<?php endif; 
+					if ( get_field('introduction', 'option') ) :
+						echo get_field('introduction', 'option');
+					endif;
+				?>
 			</header><!-- .page-header -->
-
-			<?php
-
-			if ( get_field('introduction', 'option') ) :
-				echo get_field('introduction', 'option');
-			endif;
-
-			?>
 
 			<?php 
 
@@ -59,69 +55,67 @@ get_header();
 						<?php endforeach; ?>
 				</nav>
 			</section>
-
+			<div class="map-wrapper">
+				<?php echo do_shortcode('[leaflet-map fitbounds]'); ?>
+			</div>
 			<?php
-
-			echo do_shortcode('[leaflet-map fitbounds]');
-
-			while ( have_posts() ) : the_post(); 
-				$terms = get_the_terms($post->ID, 'dt-location-category')
+			if ( have_posts() ) : ?>
+				<div class="locations-wrapper">
 				
+				<?php while ( have_posts() ) : the_post(); 
+					$terms = get_the_terms($post->ID, 'dt-location-category');
+				?>
+					<section class="expander location" 
+							data-locations=
+							<?php 	
+								$last_key = end(array_keys($terms));
 
-			?>
+								echo "[";
+								foreach($terms as $key => $term) 
+									echo $term->term_id;
+									echo $key !== $last_key ? ',' : ''; 
+								echo "]";
+							?>
+						>
+						<h2><?php the_title() ?></h2>
+						
+						<?php
+							$address = get_field('address');
+							$phone = get_field('phone_number');
 
+							if ($address || $phone): ?>
+								<address>
+									<?php echo $address ?>
+									<?php if ($phone) : ?>
+										<p><?php echo $phone ?></p>
+									<?php endif ?>
+								</address>
+						<?php endif;
+							if( have_rows('store_hours') ): ?>
 
-				<section class="expander location" 
-						data-locations=
-						<?php 	
-							$last_key = end(array_keys($terms));
+								<table>
+									<tbody>
+										<?php while( have_rows('store_hours') ) : the_row();
+									
+											$day = get_sub_field('day');
+											$hours = get_sub_field('hours');
+											?>
 
-							echo "[";
-							foreach($terms as $key => $term) 
-								echo $term->term_id;
-								echo $key !== $last_key ? ',' : ''; 
-							echo "]";
-						?>
-					>
-					<h2><?php the_title() ?></h2>
-					
-					<?php
-						$address = get_field('address');
-						$phone = get_field('phone_number');
-
-						if ($address || $phone): ?>
-							<address>
-								<?php echo $address ?>
-								<?php if ($phone) : ?>
-									<p><?php echo $phone ?></p>
-								<?php endif ?>
-							</address>
-					<?php endif;
-						if( have_rows('store_hours') ): ?>
-
-							<table>
-								<tbody>
-									<?php while( have_rows('store_hours') ) : the_row();
-								
-										$day = get_sub_field('day');
-										$hours = get_sub_field('hours');
-										?>
-
-										<tr>
-											<td><?php echo $day ?></td>
-											<td><?php echo $hours ?></td>
-										</tr>
-									<?php endwhile; ?>
-								</tbody>
-							</table>
-					<?php endif; ?>
-					<button class="expand-btn">See More</button>
-				</section>
-			<?php endwhile; 
-		endif; ?>
-
+											<tr>
+												<td><?php echo $day ?></td>
+												<td><?php echo $hours ?></td>
+											</tr>
+										<?php endwhile; ?>
+									</tbody>
+								</table>
+						<?php endif; ?>
+						<button class="expand-btn">See More</button>
+					</section>
+				<?php endwhile; ?>
+				</div>
+			<?php endif;
+		 endif; ?>
 	</main><!-- #main -->
-
 <?php
 get_sidebar();
 get_footer();
