@@ -7,6 +7,10 @@
 @import "content/posts-and-pages";
 @import "content/locations-page";
 
+/*Page Components
+--------------------------------------------- */
+@import "content/category-cards";
+
 /* Comments
 --------------------------------------------- */
 @import "comments/comments";
@@ -26,6 +30,7 @@
 /* Galleries
 --------------------------------------------- */
 @import "media/galleries";
+
 
 /* Breadcrumbs
 --------------------------------------------- */
