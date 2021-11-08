@@ -1,4 +1,4 @@
-//Home Page Category Cards 
+//Category Cards 
 .category-article{
     color: rgb(226, 226, 137);
     padding: 2rem 3rem;
@@ -33,5 +33,8 @@
         display: grid;
         grid-template-columns: 50% 50%;
         grid-gap: 1rem;
+    }
+    .category-description{
+        margin-right: 30rem;
     }
 }
