@@ -4,4 +4,16 @@
   align-items: center;
   flex-wrap: wrap;
 
+  background-color: $footer_dark;
+  color:$main_font_beige ;
+
+  a{
+    color:$main_font_beige
+  }
+  a:hover{
+    color: $header_text_color;
+  }
+  a:visited{
+    color: $main_font_beige;
+  }
 }
