@@ -22,35 +22,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( $related_products ) : ?>
 
 	<section class="related products">
+        <div class="swiper">
+            <div class="swiper-header">
+                <?php
+                    $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
 
-		<?php
-		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
+                    if ( $heading ) : ?>
+                        <h2><?php echo esc_html( $heading ); ?></h2>
+                <?php endif; ?>
 
-		if ( $heading ) :
-			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
-        
-        
-            <div class="swiper">
-                <ul class="products swiper-wrapper">
-                    <?php foreach ( $related_products as $related_product ) : ?>
-                            
-                            <?php
-                            $post_object = get_post( $related_product->get_id() );
-
-                            setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-                            wc_get_template_part( 'content', 'related-product' );
-                            ?>
-
-                    <?php endforeach; ?>
-                </ul>
-
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-btns">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
             </div>
+            <ul class="products swiper-wrapper">
+                <?php foreach ( $related_products as $related_product ) : ?>
+                        
+                        <?php
+                        $post_object = get_post( $related_product->get_id() );
 
+                        setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+                        wc_get_template_part( 'content', 'related-product' );
+                        ?>
+
+                <?php endforeach; ?>
+            </ul>
+        </div>
 	</section>
 	<?php
 endif;
