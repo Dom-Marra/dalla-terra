@@ -321,3 +321,7 @@ function add_filter_button() {
 	endif;
 }
 add_action( 'template_redirect', 'add_filter_button');
+
+add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
+	return 'woocommerce_single';
+});
