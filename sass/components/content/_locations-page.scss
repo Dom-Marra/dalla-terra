@@ -40,10 +40,6 @@
             }
 
             .location {
-                display: grid;
-                grid-template-areas: 
-                'header header'
-                'address hours';
                 position: relative;
                 max-height: 15rem;
                 overflow: hidden;
@@ -172,6 +168,25 @@
                 .locations-wrapper {
                     grid-area: locations;
                     width: 100%;
+
+                    .location {
+                        display: grid;
+                        grid-template-areas: 
+                        'header header'
+                        'address hours';
+
+                        h2 {
+                            grid-area: header;
+                        }
+        
+                        address {
+                            grid-area: address;
+                        }
+        
+                        table {
+                            grid-area: hours;
+                        }
+                    }
                 }
             }
         }
