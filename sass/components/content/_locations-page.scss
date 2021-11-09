@@ -159,10 +159,10 @@
                     max-width: 65rem;
                     width: 100%;
                     height: 40rem;
-                    max-height: calc(100vh - 10rem);
-                    margin: 0 auto;
+                    max-height: calc(100vh - #{$site-margin-top} - 2rem);
+                    margin: 0 auto 2rem;
                     position: sticky !important;
-                    top: 8rem;
+                    top: $site-margin-top;
                 }
 
                 .locations-wrapper {
