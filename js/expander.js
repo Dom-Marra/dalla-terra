@@ -6,6 +6,9 @@ expanders.forEach(expander => {
     if (btn) {
         btn.addEventListener('click', () => {
             expander.classList.toggle('toggled');
+
+            if (expander.classList.contains('toggled')) btn.innerHTML = 'Show Less'
+            else btn.innerHTML = 'See More'
         });
     }
 })
