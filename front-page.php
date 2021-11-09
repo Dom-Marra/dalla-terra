@@ -71,15 +71,24 @@ get_header();
 			<?php 
 			$featured_posts = get_field('bestsellers');
 			if( $featured_posts ): ?>
-				<h2>Bestsellers</h2>
+				
 
 				<div class="swiper">
-					<ul class="swiper-wrapper">
+					<div class="swiper-header">
+						<h2>Bestsellers</h2>
+
+						<div class="swiper-btns">
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+						</div>
+					</div>
+
+					<ul class="swiper-wrapper bestsellers">
 						<?php foreach( $featured_posts as $post ): 
 							setup_postdata($post); 
 							$categories = get_the_terms( $post->ID, 'product_cat' );	
 						?>
-							<li class='swiper-slide'>
+							<li class='swiper-slide bestseller'>
 								<a href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail(); ?>
 									<p class="view-product-cta">View Product</p>
@@ -94,9 +103,6 @@ get_header();
 							</li>
 						<?php endforeach; ?>
 					</ul>
-					
-					<div class="swiper-button-prev"></div>
-                	<div class="swiper-button-next"></div>
 				</div>
 				
 				
