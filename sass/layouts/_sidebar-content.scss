@@ -1,5 +1,5 @@
 .site {
-	margin-top: 8rem;
+	margin-top: $site-margin-top;
 	display: grid;
 	grid-template-areas:
 		"header header"
@@ -91,8 +91,8 @@
 
 		.sidebar-wrapper {
 			position: sticky;
-			top: 8rem;
-			height: calc(100vh - 10rem);
+			top: $site-margin-top;
+			height: calc(100vh - #{$site-margin-top} - 2rem);
 
 			.close-filters { 
 				display: none;

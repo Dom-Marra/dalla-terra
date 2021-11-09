@@ -137,15 +137,17 @@
 	}
 }
 
-.menu-toggle,
-.search {
-	border: none;
-	background-color: transparent;
-	color: $header_text_color;
-
-	&:hover {
-		cursor: pointer;
-	} 
+header {
+	.menu-toggle,
+	.search {
+		border: none;
+		background-color: transparent;
+		color: $header_text_color;
+	
+		&:hover {
+			cursor: pointer;
+		} 
+	}
 }
 
 .menu-toggle {
