@@ -239,6 +239,21 @@ if ( ! function_exists( 'dalla_terra_woocommerce_header_cart' ) ) {
 //Alter the hooks on the archive product template
 function dalla_terra_archive_product_hooks() {
 
+	add_action(
+		'woocommerce_after_shop_loop_item',
+		function () { 
+			$categories = get_the_terms( $post->ID, 'product_cat' );	
+
+			if (!empty($categories)) :
+				$cat = $categories[0];
+				$bg_colour = get_field('product_colour', 'product_cat_'.$cat->term_id ); ?>
+
+				<div class="product-bg" style="background-color: <?php echo $bg_colour; ?>"></div>
+			<?php endif; 
+		},
+		30
+	);
+
 	remove_action(
 		'woocommerce_before_shop_loop',
 		'woocommerce_output_all_notices',
@@ -274,20 +289,6 @@ add_action( 'template_redirect', 'dalla_terra_redirect_to_shop');
 
 function add_filter_button() {
 	if (is_shop()) :
-		add_action(
-			'woocommerce_after_shop_loop_item',
-			function () { 
-				$categories = get_the_terms( $post->ID, 'product_cat' );	
-	
-				if (!empty($categories)) :
-					$cat = $categories[0];
-					$bg_colour = get_field('product_colour', 'product_cat_'.$cat->term_id ); ?>
-	
-					<div class="product-bg" style="background-color: <?php echo $bg_colour; ?>"></div>
-				<?php endif; 
-			},
-			30
-		);
 	
 		remove_action(
 			'woocommerce_before_main_content',
