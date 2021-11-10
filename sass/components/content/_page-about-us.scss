@@ -1,4 +1,8 @@
 .page-id-20{
+    .about-us-page-content
+    {
+        margin: 0 2rem;
+    }
     //Hero Image Styles
     #custom-cta-content{
         position: relative;
@@ -52,12 +56,11 @@
     .about-us-farm-gallery{
         
         .farm-gallery{
-            ul{display: grid;
+            ul{
+                display: grid;
             justify-content: center;
             grid-gap: 2rem;
-
-            
-        }
+            } 
 
 
             li{
