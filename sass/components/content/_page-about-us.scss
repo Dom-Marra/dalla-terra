@@ -9,7 +9,7 @@
 
         h2{
             position: absolute;     
-            top: 20%;   
+            top: 50%;   
             color: white;
             padding: 0 2rem 0 2rem;
             
@@ -97,10 +97,39 @@
     }
 
     //Mission and History Paragraphs{
-    .about-us-mission-and-history{
-        margin: 1rem 5rem;
+    .about-us-mission-history-vision{
+        margin: 1rem 3rem;
         display: flex;
         flex-direction: column;
+    }
+
+    //Bottom of page
+    .link-cta{
+        margin-top: 2rem;
+    }
+    .view-our-shop{
+        background-color: rgb(255, 246, 220);
+        padding: 1rem;
+        text-transform: uppercase;
+        color: black;
+        border: black 1px solid;
+
+        filter: drop-shadow(5px 5px #000000ab);
+        transition: .5s ease-in-out;
+
+    }
+
+    .view-our-shop:hover{
+        filter: drop-shadow(0px 0px);
+        transition: .5s ease-in-out;
+    }
+
+    .menu-social-menu-container{
+        margin-top: 2rem;
+
+        ul{
+            padding: 0;
+        }
     }
 
 }
@@ -150,30 +179,6 @@
             }
             .about-us-history{
                 margin-left: 1rem;
-            }
-
-            .link-cta{
-                margin-top: 2rem;
-            }
-            .view-our-shop{
-                background-color: rgb(255, 246, 220);
-                padding: 1rem;
-                text-transform: uppercase;
-                color: black;
-                border: black 1px solid;
-
-                filter: drop-shadow(5px 5px #000000ab);
-                transition: .5s ease-in-out;
-
-            }
-
-            .view-our-shop:hover{
-                filter: drop-shadow(0px 0px);
-                transition: .5s ease-in-out;
-            }
-
-            .menu-social-menu-container{
-                margin-top: 2rem;
             }
         }
 
