@@ -16,7 +16,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
+		<div class="home-intro-grid">
 		<section class="view-single-product-home">
 			<?php 
 			$featured_posts = get_field('view_single_product');
@@ -66,6 +66,7 @@ get_header();
 					</div>
 			<?php endif; ?>
 		</section>
+		</div>
 
 		<section class="bestsellers-home">
 			<?php 

@@ -1,27 +1,50 @@
 .page-id-20{
+    .about-us-page-content {
+        margin: 0 2rem;
+    }
+
     //Hero Image Styles
     #custom-cta-content{
         position: relative;
+
         img{
             height: 100vh;
             object-fit: cover;
             width: 100%;
+            display: block;
         }
 
-        h2{
+        .banner-text {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(#000, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             position: absolute;     
-            top: 50%;   
             color: white;
             padding: 0 2rem 0 2rem;
+            top: 0;
+
+            h1 {
+                margin-top: 0;
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 1.5rem;
+                font-family: $font__heading;
+                margin-top: 0.1rem;
+            }
             
         }
     }
 
     //Blockquote
     .about-us-quote{
-        display: grid;
-        grid-template-columns: 20% 60%  20%;
-        padding: 1rem 2rem;
+        padding: 1rem;
+        margin: 4rem auto;
+
         blockquote{
             font-style: italic;
             font-size: 1.5rem;
@@ -37,6 +60,7 @@
             flex-direction: column;
             align-items: center;
         }
+
         blockquote:before {
             content: open-quote;
             display: block;
@@ -45,25 +69,36 @@
             color: rgb(129, 129, 129);
             font-size: 6rem;
             margin-top: 1rem;
-          }
+        }
+    }
+
+    .gallery-heading {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        color: white;
+        z-index: 1;
     }
 
     //Farm Image Gallery
     .about-us-farm-gallery{
+        position: relative;
         
         .farm-gallery{
-            ul{display: grid;
-            justify-content: center;
-            grid-gap: 2rem;
 
-            
-        }
+            ul{
+                display: grid;
+                justify-content: center;
+                grid-gap: 2rem;
+                grid-template-rows: repeat(2, 25rem);
+            } 
 
 
             li{
-            width: 100%;
-            height: 100%;
+                width: 100%;
+                height: 100%;
             }
+
             img{
                 width: 100%;
                 height: 100%;
@@ -74,22 +109,35 @@
 
     //Winery Image Gallery
     .about-us-winery-gallery{
-        
+        position: relative;
+
         .winery-gallery{
-            ul{display: grid;
-            grid-template-columns: 1fr;
-            justify-content: center;
-            grid-gap: 2rem;
-
-            
-        }
-
-
-            li{
-            width: 100%;
-            height: 100%;
+            ul {
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-content: center;
+                grid-gap: 2rem;
+                grid-template-rows: repeat(2, 25rem);
             }
-            img{
+
+
+            li {
+                width: 100%;
+                height: 100%;
+                position: relative;
+
+                &:first-of-type::after {
+                    position: absolute;
+                    content: '';
+                    height: 100%;
+                    width: 100%;
+                    background-color: rgba(#000, 0.25);
+                    top: 0;
+                    left: 0;
+                }
+            }
+
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -99,15 +147,17 @@
 
     //Mission and History Paragraphs{
     .about-us-mission-history-vision{
-        margin: 1rem 3rem;
+        margin: 4rem auto;
         display: flex;
         flex-direction: column;
+        max-width: 85%;
     }
 
     //Bottom of page
-    .link-cta{
+    .link-cta {
         margin-top: 2rem;
     }
+
     .view-our-shop{
         background-color: rgb(255, 246, 220);
         padding: 1rem;
@@ -137,7 +187,35 @@
 
 @media (min-width: $desktop){
     .page-id-20{
+
+        #custom-cta-content{
+    
+            .banner-text {
+                h1 {
+                    margin-top: 0;
+                    font-size: 1rem;
+                }
+    
+                p {
+                    font-size: 1.75vw;
+                    max-width: 50%;
+                    margin-top: 0.1rem;
+                }
+                
+            }
+        }
+
+        .about-us-quote {
+            display: grid;
+            grid-template-columns: 20% 60%  20%;
+        }
+
+        .gallery-heading {
+            left: 5%;
+        }
+
         .about-us-farm-gallery{
+
             .farm-gallery{
                 ul{
                     grid-template-columns: repeat(3, 30%);
@@ -154,15 +232,18 @@
 
         //Winery Gallery
         .about-us-winery-gallery{
+
             .winery-gallery{
                 ul{
                     grid-template-columns: repeat(3, 30%);
                 }
             }
+
             li:first-of-type{
                 grid-column: 1/3;
                 grid-row: 1/2;
             }
+
             li:last-of-type{
                 grid-column: 2/4;
             }
@@ -170,7 +251,6 @@
 
          //Mission and History Paragraphs{
         .about-us-mission-history-vision{
-            margin: 1rem 5rem;
             display: grid;
             grid-template-columns: 50% 50%;
             justify-items: end;
@@ -178,10 +258,10 @@
             .about-us-mission{
                 margin-right: 1rem;
             }
+
             .about-us-history{
                 margin-left: 1rem;
             }
         }
-
     }
 }
