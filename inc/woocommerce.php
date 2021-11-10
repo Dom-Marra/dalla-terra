@@ -271,7 +271,6 @@ function dalla_terra_archive_product_hooks() {
 		'woocommerce_catalog_ordering',
 		30,
 	);
-	
 }
 add_action( 'init', 'dalla_terra_archive_product_hooks' );
 
@@ -325,3 +324,16 @@ add_action( 'template_redirect', 'add_filter_button');
 add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
 	return 'woocommerce_single';
 });
+
+function woocommerce_template_product_description() {
+	wc_get_template( 'single-product/tabs/description.php' );
+}
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_product_description', 20 );
+
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+    unset( $tabs['description'] );          // Remove the description tab
+    unset( $tabs['additional_information'] );   // Remove the additional information tab
+    return $tabs;
+}
