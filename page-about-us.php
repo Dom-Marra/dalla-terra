@@ -46,7 +46,7 @@ get_header();
                     <p><?php echo $farmGallery['gallery_caption']; ?></p>
                     <?php endif; ?>
 
-                    <div>
+                    <div class="farm-gallery">
                         <?php
                         if( $images ): ?>
                             <ul>
@@ -62,21 +62,23 @@ get_header();
                         <?php endif; ?>
         </section>
 
-        <section class="about-us-mission">
-        <?php $field = get_field_object('our_mission');?>
-            <h2><?php echo $field['label']; ?></h2>
-            <p><?php the_field('our_mission'); ?></p>
-        </section>
+        <div class="about-us-mission-history-vision">
+            <section class="about-us-mission">
+            <?php $field = get_field_object('our_mission');?>
+                <h2><?php echo $field['label']; ?></h2>
+                <p><?php the_field('our_mission'); ?></p>
+            </section>
 
-        <section class="about-us-history">
-        <?php
-            $field = get_field_object('our_history');
-            ?>
-            <h2><?php echo $field['label']; ?></h2>
-            <p><?php the_field('our_history'); ?></p>
-        </section>
+            <section class="about-us-history">
+            <?php
+                $field = get_field_object('our_history');
+                ?>
+                <h2><?php echo $field['label']; ?></h2>
+                <p><?php the_field('our_history'); ?></p>
+            </section>
+        </div>
 
-        <section class="winery-gallery">
+        <section class="about-us-winery-gallery">
         <?php
             $wineryGallery = get_field('winery_gallery');
             $images = $wineryGallery['images'];
@@ -86,7 +88,7 @@ get_header();
                     <p><?php echo $wineryGallery['gallery_caption']; ?></p>
                     <?php endif; ?>
 
-                    <div>
+                    <div class="winery-gallery">
                         <?php
                         if( $images ): ?>
                             <ul>
@@ -101,27 +103,29 @@ get_header();
                             </ul>
                         <?php endif; ?>
         </section>
+        
+        <div class="about-us-mission-history-vision">
+            <section class="about-us-vision">
+            <?php $field = get_field_object('our_vision');?>
+                <h2><?php echo $field['label']; ?></h2>
+                <p><?php the_field('our_vision'); ?></p>
+            </section>
 
-        <section class="about-us-vision">
-        <?php $field = get_field_object('our_vision');?>
-            <h2><?php echo $field['label']; ?></h2>
-            <p><?php the_field('our_vision'); ?></p>
-        </section>
-
-        <section class="link-cta">
-        <?php
-				$shopLink= get_field('link');
-				if( $shopLink ): ?>
-					<a href="<?php echo esc_url( $shopLink['link']['url'] ); ?>">
-						<?php echo esc_html( $shopLink['text']); ?>
-					</a>
-						
-				<?php endif; ?>
-                
-        <nav id="social-navigation" class="social-navigation">
-                <?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
-	    </nav>
-        </section>
+            <section class="link-cta">
+            <?php
+                    $shopLink= get_field('link');
+                    if( $shopLink ): ?>
+                        <a class="view-our-shop" href="<?php echo esc_url( $shopLink['link']['url'] ); ?>">
+                            <?php echo esc_html( $shopLink['text']); ?>
+                        </a>
+                            
+                    <?php endif; ?>
+                    
+            <nav id="social-navigation" class="social-navigation">
+                    <?php wp_nav_menu( array( 'theme_location' => 'social')); ?>
+            </nav>
+            </section>
+        </div>
 		
         <?php endwhile; // End of the loop.
 		?>
