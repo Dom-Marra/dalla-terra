@@ -1,23 +1,58 @@
 .sticky {
-	display: block;
+  display: block;
 }
 
 .post,
 .page {
-	margin: 0 0 1.5em;
+  margin: 2rem 1rem;
 }
 
 .updated:not(.published) {
-	display: none;
+  display: none;
 }
 
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+  margin: 1.5em 0 0;
 }
 
 .page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+// Home Page 3 Intro Cards
+.home-intro-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  .view-single-product-home {
+    background-color: $corporate_red;
+    flex-grow: 2;
+    img {
+      height: 16rem;
+      width: 100%;
+      object-fit: scale-down;
+    }
+  }
+  .custom-cta-home,
+  .view-shop-cta-home {
+    flex: 1;
+    img {
+      width: 10rem;
+      height: 8rem;
+      object-fit: cover;
+    }
+  }
+}
+
+// Home Page Category Section
+
+.categories-section-home {
+  // display: flex;
+  .category-article {
+    height: 16rem;
+  }
 }
