@@ -337,3 +337,12 @@ function woo_remove_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] );   // Remove the additional information tab
     return $tabs;
 }
+
+add_filter ( 'woocommerce_account_menu_items', 'woo_remove_my_account_links' );
+function woo_remove_my_account_links( $menu_links ){
+	
+	unset( $menu_links['downloads'] ); // Disable Downloads
+	
+	return $menu_links;
+	
+}
