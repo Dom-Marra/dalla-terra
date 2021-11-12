@@ -16,56 +16,58 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
+		<h1 class="screen-reader-text"><?php the_title(); ?></h1>
+
 		<div class="home-intro-grid">
-		<section class="view-single-product-home">
-			<?php 
-			$featured_posts = get_field('view_single_product');
-			if( $featured_posts ): ?>
-			
-				<?php foreach( $featured_posts as $post ): 
-			
-					// Setup this post for WP functions (variable must be named $post).
-					setup_postdata($post); ?>
-					<?php the_post_thumbnail() ?>
-						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				<?php endforeach; ?>
-				
+			<section class="view-single-product-home">
 				<?php 
-				// Reset the global post object so that the rest of the page works correctly.
-				wp_reset_postdata(); ?>
-			<?php endif; ?>
-		</section>
-
-
-		<section class="custom-cta-home"> 
-			<?php
-			$custom_cta = get_field('custom_call_to_action');
-			if( $custom_cta ): ?>
-				<div id="custom-cta-content">
-					<?php echo wp_get_attachment_image( $custom_cta['background_image'], 'full' ); ?>
+				$featured_posts = get_field('view_single_product');
+				if( $featured_posts ): ?>
+				
+					<?php foreach( $featured_posts as $post ): 
+				
+						// Setup this post for WP functions (variable must be named $post).
+						setup_postdata($post); ?>
+						<?php the_post_thumbnail() ?>
+							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					<?php endforeach; ?>
 					
-					<a href="<?php echo esc_url( $custom_cta['link'] ); ?>">
-						<?php echo esc_html( $custom_cta['button_text']); ?>
-					</a>
-					
-				</div>
-			<?php endif; ?>
-		</section>
+					<?php 
+					// Reset the global post object so that the rest of the page works correctly.
+					wp_reset_postdata(); ?>
+				<?php endif; ?>
+			</section>
 
-		<section class="view-shop-cta-home">
-			<?php
-				$view_shop_CTA = get_field('view_shop_cta');
-				if( $view_shop_CTA ): ?>
+
+			<section class="custom-cta-home"> 
+				<?php
+				$custom_cta = get_field('custom_call_to_action');
+				if( $custom_cta ): ?>
 					<div id="custom-cta-content">
-						<?php echo wp_get_attachment_image( $view_shop_CTA['background_image'], 'full' ); ?>
+						<?php echo wp_get_attachment_image( $custom_cta['background_image'], 'full' ); ?>
 						
-						<a href="<?php echo esc_url( $view_shop_CTA['link']['url'] ); ?>">
-							<?php echo esc_html( $view_shop_CTA['button_text']); ?>
+						<a href="<?php echo esc_url( $custom_cta['link'] ); ?>">
+							<?php echo esc_html( $custom_cta['button_text']); ?>
 						</a>
 						
 					</div>
-			<?php endif; ?>
-		</section>
+				<?php endif; ?>
+			</section>
+
+			<section class="view-shop-cta-home">
+				<?php
+					$view_shop_CTA = get_field('view_shop_cta');
+					if( $view_shop_CTA ): ?>
+						<div id="custom-cta-content">
+							<?php echo wp_get_attachment_image( $view_shop_CTA['background_image'], 'full' ); ?>
+							
+							<a href="<?php echo esc_url( $view_shop_CTA['link']['url'] ); ?>">
+								<?php echo esc_html( $view_shop_CTA['button_text']); ?>
+							</a>
+							
+						</div>
+				<?php endif; ?>
+			</section>
 		</div>
 
 		<section class="bestsellers-home">

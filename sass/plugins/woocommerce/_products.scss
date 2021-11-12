@@ -69,8 +69,7 @@ ul.products {
 			width: 100%;
 			margin: 0.5rem auto;
 			display: block;
-			background-color: white;
-            padding: 0.5rem 2rem;
+			@include cta-button;
 		}
 	}
 }
@@ -90,7 +89,7 @@ ul.products {
 	}
 }
 
-@media screen and (min-width: 72rem) {
+@media screen and (min-width: 85rem) {
 	ul.products {
 		grid-template-columns: repeat(4, 1fr);
 	}

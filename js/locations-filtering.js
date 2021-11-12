@@ -35,6 +35,8 @@ FILTERS?.forEach(filter => {
             history.pushState({}, '', newRelativePathQuery);
             filtering();
         }
+
+        e.target.blur();
     });
 })
 

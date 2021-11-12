@@ -23,7 +23,7 @@
 	&:focus-visible {
 		background-color: $header_text_color;
 		color: white;
-		border: 1px solid darken($header_text_color, 0.5);
+		border: 1px solid darken($header_text_color, 25%);
 		outline: none;
 		cursor: pointer;
 	}
@@ -58,4 +58,9 @@
 	th, td {
 		padding: 1rem;
 	}
+}
+
+@mixin cta-button {
+	background-color: white;
+	padding: 0.5rem 2rem;
 }

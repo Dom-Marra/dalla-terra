@@ -17,11 +17,7 @@
                         display: block;
                         width: 100%;
                         margin-bottom: 1rem;
-                        background-color: transparent;
-                        border-radius: 0;
-                        border: 1px solid black;
-                        padding: 1rem 1.25rem;
-                        transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+                        @include dt-normal-button;
 
                         &.toggled {
                             background-color: $header_text_color;
@@ -48,7 +44,6 @@
                 padding: 0 1rem 3rem;
                 box-sizing: border-box;
                 transition: max-height 0.5s ease-in-out;
-                column-gap: 1.5rem;
                 grid-template-columns: 40% 60%;
 
                 h2 {
@@ -137,7 +132,8 @@
                 'filters map'
                 'locations map';
                 grid-template-columns: minmax(30%, 30rem) minmax(55%, 1fr);
-                column-gap: 2rem;
+                column-gap: 4rem;
+                padding: 0 4rem 2rem;
 
                 .page-header {
                     margin: 0;
@@ -156,13 +152,12 @@
                 }
 
                 .leaflet-map {
-                    max-width: 65rem;
+                    max-width: 100%;
                     width: 100%;
-                    height: 40rem;
-                    max-height: calc(100vh - #{$site-margin-top} - 2rem);
+                    height: calc(100vh - #{$site-margin-top} - 6rem);
                     margin: 0 auto 2rem;
                     position: sticky !important;
-                    top: $site-margin-top;
+                    top: $site-margin-top + 2rem;
                 }
 
                 .locations-wrapper {
@@ -174,6 +169,8 @@
                         grid-template-areas: 
                         'header header'
                         'address hours';
+                        column-gap: 1.5rem;
+                        grid-template-columns: 1fr 55%;
 
                         h2 {
                             grid-area: header;

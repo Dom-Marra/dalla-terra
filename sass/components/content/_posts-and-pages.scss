@@ -43,11 +43,16 @@
   }
 }
 
-// Home Page Category Section
 
-.categories-section-home {
-  // display: flex;
-  .category-article {
-    height: 16rem;
+.page-id-111 {
+
+  @media screen and (min-width: 58em) {
+    .site-main {
+      h1 {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   }
 }
