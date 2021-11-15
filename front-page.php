@@ -58,7 +58,7 @@ get_header();
 				<?php
 					$view_shop_CTA = get_field('view_shop_cta');
 					if( $view_shop_CTA ): ?>
-						<div id="custom-cta-content">
+						<div class="custom-cta-content">
 							<?php echo wp_get_attachment_image( $view_shop_CTA['background_image'], 'full' ); ?>
 							
 							<a href="<?php echo esc_url( $view_shop_CTA['link']['url'] ); ?>">
