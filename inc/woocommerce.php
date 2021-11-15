@@ -325,6 +325,10 @@ add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
 	return 'woocommerce_single';
 });
 
+add_filter( 'woocommerce_gallery_image_size', function( $size ) {
+	return 'large';
+});
+
 function woocommerce_template_product_description() {
 	wc_get_template( 'single-product/tabs/description.php' );
 }
@@ -344,5 +348,16 @@ function woo_remove_my_account_links( $menu_links ){
 	unset( $menu_links['downloads'] ); // Disable Downloads
 	
 	return $menu_links;
-	
 }
+
+remove_action(
+	'woocommerce_single_product_summary',
+	'woocommerce_template_single_rating',
+	10
+);
+
+add_action(
+	'woocommerce_single_product_summary',
+	'woocommerce_template_single_rating',
+	15
+);

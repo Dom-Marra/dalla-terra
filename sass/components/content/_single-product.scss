@@ -1,109 +1,236 @@
-.woocommerce-product-gallery {
-	background-color: $color__background-button;
-}
+.single-product {
+	.woocommerce-product-gallery {
+		background-color: #EAE7DC;
+		width: 100%;
 
-// title
-.woocommerce-breadcrumb {
-	font-size: 0.75rem;
-}
+		.emoji {
+			display: none !important;
+		}
 
-.product_title {
-	padding-top: 1rem;
-}
+		.woocommerce-product-gallery__image {
+			a {
+				display: block;
+				width: 100%;
 
-.product_meta {
-	display: none;
-}
-
-// summary
-
-.summary {
-	padding: 0 1rem;
-}
-
-.summary h1 {
-	font-size: 1.5rem;
-}
-
-.summary h2 {
-	display: none;
-}
-
-.summary p {
-	font-size: 0.75rem;
-}
-
-li.additional_information_tab {
-	display: none !important;
-}
-
-li.description_tab {
-	display: none !important;
-}
-
-.woocommerce-product-gallery__trigger {
-	img {
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+	
+	// title
+	
+	.product_title {
+		padding-top: 1rem;
+	}
+	
+	.product_meta {
 		display: none;
 	}
-}
+	
+	// summary
+	
+	.summary h1 {
+		font-size: 1.5rem;
+	}
+	
+	.summary h2 {
+		display: none;
+	}
+	
+	li.additional_information_tab {
+		display: none !important;
+	}
+	
+	li.description_tab {
+		display: none !important;
+	}
+	
+	.woocommerce-product-gallery__trigger {
+		img {
+			display: none;
+		}
+	}
+	
+	.stock {
+		display: none;
+	}
+	
+	// review
 
-.stock {
-	display: none;
-}
+	.comment-form {
+		p {
+			display: flex;
+			flex-direction: column;
 
-// review
+			input,
+			textarea {
+				@include dt-normal-input;
+			}
 
-#comments {
-	display: none;
-}
+			input[type=submit] {
+				@include dt-normal-button;
+			}
+		}
 
-#reply-title {
-	display: none;
-}
+		.comment-form-cookies-consent {
+			display: block;
+		}
 
-.comment-notes {
-	display: none;
-}
+		.comment-notes,
+		.comment-form-rating label {
+			display: none;
+		}
 
-.comment-form-rating label {
-	display: none;
-}
+		.comment-form-rating {
+			.stars {
+				margin: 2rem 0 1.5rem;
+			}
+		}
+	}
 
-.comment-form-comment {
-	display: none;
-}
+	.commentlist {
+		padding: 0;
 
-.comment-form-author {
-	display: none;
-}
+		li {
+			list-style: none;
+		}
 
-.comment-form-email {
-	display: none;
-}
+		.comment_container {
+			background-color: rgba(0, 0, 0, 0.1);
+			padding: 1rem;
 
-.comment-form-cookies-consent {
-	display: none;
-}
+			.star-rating {
+				span::before {
+					color: $header_text_color;
+				}
+			}
+		}
+	}
+	
+	.woocommerce-tabs ul.tabs,
+	.comment-reply-title,
+	.woocommerce-noreviews {
+		display: none;
+	}
 
-.woocommerce-tabs ul.tabs {
-	display: none;
-}
+	
+	// cart
+	
+	.cart {
+		display: flex;
 
-.stars {
-	padding: 0 1rem;
-}
+		button {
+			flex: 1;
+			@include dt-normal-button;
+		}
 
-// cart
+		.quantity {
+			
+			input {
+				@include dt-normal-input;
+				text-align: center;
+				height: 100%;
+				width: 3rem;
+				margin-right: 1rem;
+			}
+		}
+	}
 
-.cart {
-	button {
-		background-color: $color__background-button;
-		border: none;
-		text-transform: uppercase;
-		font: $font__main;
-		font-size: 0.75rem;
-		padding: 0.75rem 2rem;
-		width: 100%;
-		margin: 1rem 0;
+	//swiper
+	.related-products {
+		ul.products li.product {
+			margin-bottom: 0;
+			padding: 0;
+
+			&:hover {
+				.product-bg {
+					height: 100%;
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: 37em) {
+		.site-main {
+			max-width: 40rem;
+			margin: auto;
+		}
+	}
+
+	@media screen and (min-width: 66em) { 
+		.site-main {
+			max-width: 85rem;
+			margin: 0 auto;
+
+			div.product {
+				display: grid;
+				grid-template-areas: 
+				'gallery summary'
+				'reviews reviews'
+				'related related';
+				column-gap: 1.75rem;
+				grid-template-columns: 1fr 1fr;
+				margin-top: 2rem;
+			}
+
+			.woocommerce-product-gallery {
+				grid-area: gallery;
+				align-self: start;
+			}
+
+			.summary {
+				display: flex;
+				flex-direction: column;
+				grid-area: summary;
+				margin-top: 0;
+				
+				h1 {
+					margin-top: 0;
+					padding-top: 0;
+				}
+
+				.cart {
+					margin-top: auto;
+				}
+			}
+
+			.woocommerce-tabs {
+				grid-area: reviews;
+
+				.woocommerce-Reviews {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					column-gap: 2.5rem;
+					grid-template-areas:
+					'title title'
+					'form reviews';
+					margin-top: 4rem;
+
+					.woocommerce-Reviews-title {
+						grid-area: title;
+					}
+
+					#comments {
+						grid-area: reviews;
+
+						h2 {
+							margin-top: 0;
+						}
+					}
+
+					#review_form_wrapper {
+						grid-area: form;
+					}
+				}
+			}
+
+			.related-products {
+				grid-area: related;
+			}
+		}
 	}
 }
+

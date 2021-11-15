@@ -29,7 +29,7 @@ ul.products {
 			img {
 				position: relative;
 				grid-area: img;
-				object-fit: cover;
+				object-fit: contain;
 				object-position: center;
 				display: block;
 				width: 300px;
