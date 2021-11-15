@@ -15,8 +15,8 @@
 
             a{
                 position: absolute;
-                left: 25%;
-                top: 6rem;
+                left: 0;
+                bottom: 0;
                 background-color:white;
                 padding: 1rem;
                 border: 1px $footer_dark solid;
@@ -45,6 +45,8 @@
                 img{
                     width: 100%;
                     height: 16rem;
+                    object-fit: cover;
+                    object-position: bottom;
                 }
 
                 a{
@@ -95,10 +97,9 @@
             align-items: center;
             color: white;
             text-align: center;
+            width: 100%;
+            justify-content: center;
             
-            // h2{
-            //     background-color: rgba(0, 0, 0, 0.5);
-            // }
         }
 
         a{
@@ -137,6 +138,7 @@
     .page-id-18{
         .home-intro-grid{
             .view-shop-cta-home{
+                grid-row: 2/3;
                 height: 20rem;
                 img{
                     height: 20rem;
@@ -144,6 +146,23 @@
 
                 a{
                     left: 50% ;
+                }
+            }
+
+            .custom-cta-home{
+                grid-row: 1/2;
+                height: 25rem;
+
+                img{
+                    height: 25rem;
+                }
+            }
+            .view-single-product-home{
+                grid-row: 1/2;
+                height: 25rem;
+
+                img{
+                    height: 25rem;
                 }
             }
         }
