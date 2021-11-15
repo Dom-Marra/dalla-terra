@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
-	<section class="related products">
+	<section class="related-products">
         <div class="swiper">
             <div class="swiper-header">
                 <?php
