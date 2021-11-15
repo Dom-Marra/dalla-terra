@@ -1,0 +1,166 @@
+.page-id-18{
+    // Home Page 3 Intro Cards
+    .home-intro-grid {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 2(1fr);
+        grid-gap: 0.5rem;
+
+        .view-single-product-home {
+        background-color: $corporate_red;
+        position: relative;
+        height: 16rem;
+        grid-column: 1/2;
+        grid-row: 2/3;
+
+            a{
+                position: absolute;
+                left: 25%;
+                top: 6rem;
+                background-color:white;
+                padding: 1rem;
+                border: 1px $footer_dark solid;
+            }
+        img {
+            height: 16rem;
+            width: 100%;
+            object-fit: scale-down;
+        }
+        }
+        .custom-cta-home,
+            .view-shop-cta-home {
+                grid-row: 2/3;
+                grid-column: 2/3;
+                img {
+                    width: 10rem;
+                    height: 8rem;
+                    object-fit: cover;
+                }
+            }
+                
+            .custom-cta-content{
+                position: relative;
+                width: 100%;
+                height: 16rem;
+                img{
+                    width: 100%;
+                    height: 16rem;
+                }
+
+                a{
+                    position: absolute;
+                    left: 50%;
+                    top: 6rem;
+                    display: block;
+
+                    background-color:white;
+                    padding: .5rem;
+                    border: 1px $footer_dark solid;
+
+                }
+            }
+
+        .view-shop-cta-home{
+            position: relative;
+            width: 100%;
+            height: 16rem;
+            grid-column: 1/3;
+            grid-row: 1/2;
+            img{
+                width: 100%;
+                height: 16rem;
+            }
+
+            a{
+                position: absolute;
+                left: 25%;
+                top: 6rem;
+                background-color:white;
+                padding: 1rem;
+                border: 1px $footer_dark solid;
+
+            }
+        }
+    }
+    //About Us Banner
+    #about-us-banner{
+        object-fit: cover;
+        position: relative;
+
+        figcaption{
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+            
+            // h2{
+            //     background-color: rgba(0, 0, 0, 0.5);
+            // }
+        }
+
+        a{
+            background-color:white;
+            padding: 1rem;
+            border: 1px $footer_dark solid;
+        }
+    }   
+}
+
+@media (min-width: $tablet){
+    .page-id-18{
+        .home-intro-grid{
+            .view-shop-cta-home{
+                height: 20rem;
+                img{
+                    height: 20rem;
+                }
+
+                a{
+                    left: 50% ;
+                }
+            }
+        }
+
+        #about-us-banner{
+            figcaption{
+                top: 30%;
+            }
+        }
+
+    }
+}
+
+@media (min-width: $desktop){
+    .page-id-18{
+        .home-intro-grid{
+            .view-shop-cta-home{
+                height: 20rem;
+                img{
+                    height: 20rem;
+                }
+
+                a{
+                    left: 50% ;
+                }
+            }
+        }
+
+        #about-us-banner{
+            img{
+                object-fit: cover;
+                height: 60vh;
+            }
+            figcaption{
+                top: 30%;
+                padding: 2rem;
+                left: 20%;
+                text-align: center;
+            }
+        }
+
+    }
+
+}

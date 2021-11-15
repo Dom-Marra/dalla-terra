@@ -17,31 +17,6 @@
   margin: 0 0 1.5em;
 }
 
-// Home Page 3 Intro Cards
-.home-intro-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  .view-single-product-home {
-    background-color: $corporate_red;
-    flex-grow: 2;
-    img {
-      height: 16rem;
-      width: 100%;
-      object-fit: scale-down;
-    }
-  }
-  .custom-cta-home,
-  .view-shop-cta-home {
-    flex: 1;
-    img {
-      width: 10rem;
-      height: 8rem;
-      object-fit: cover;
-    }
-  }
-}
 
 
 .page-id-111 {
