@@ -142,11 +142,19 @@ header {
 	.search {
 		border: none;
 		background-color: transparent;
-		color: $header_text_color;
-	
+		color: $color__link;
+		transition: color 0.25s ease-in-out;
+
 		&:hover {
+			color: $color__link-hover;
 			cursor: pointer;
 		} 
+
+		&:focus,
+		&:focus-visible {
+			outline: none;
+			color: $color__link-hover;
+		}
 	}
 }
 
@@ -210,15 +218,16 @@ header {
 			border-radius: 0;
 			border: none;
 			height: 2.5rem;
-			border: 2px solid $header_text_color;
+			border: 2px solid $color__link-hover;
 			padding: 0 1rem;
 
-			&:focus {
+			&:focus,
+			&:hover {
 				outline: none;
 			}
 
 			&::placeholder {
-				color: transparentize($header_text_color, 0.15);
+				color: transparentize($color__link, 0.15);
 			}
 
 			&::-webkit-search-cancel-button {
@@ -238,8 +247,12 @@ header {
 			padding: 0 1.5rem;
 			height: 2.5rem;
 			border-radius: 0;
-			background-color: $header_text_color;
+			background-color: $color__link-hover;
 			color: white;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -254,12 +267,5 @@ header {
 				margin: 1rem;
 			}
 		}
-	}
-}
-
-.main-navigation, 
-.hamburger-navigation {
-	a {
-		color: $header_text_color;
 	}
 }
