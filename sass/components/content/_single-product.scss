@@ -2,27 +2,35 @@
 	background-color: $color__background-button;
 }
 
+// title
+.woocommerce-breadcrumb {
+	font-size: 0.75rem;
+}
+
 .product_title {
 	padding-top: 1rem;
 }
 
-.cart {
-	button {
-		background-color: $color__background-button;
-		border: none;
-		text-transform: uppercase;
-		font: $font__main;
-		font-size: 0.75rem;
-		padding: 0.75rem 2rem;
-		width: 100%;
-		margin: 1rem 0;
-	}
+.product_meta {
+	display: none;
 }
 
-.woocommerce-Tabs-panel {
-	h2 {
-		display: none;
-	}
+// summary
+
+.summary {
+	padding: 0 1rem;
+}
+
+.summary h1 {
+	font-size: 1.5rem;
+}
+
+.summary h2 {
+	display: none;
+}
+
+.summary p {
+	font-size: 0.75rem;
 }
 
 li.additional_information_tab {
@@ -41,4 +49,61 @@ li.description_tab {
 
 .stock {
 	display: none;
+}
+
+// review
+
+#comments {
+	display: none;
+}
+
+#reply-title {
+	display: none;
+}
+
+.comment-notes {
+	display: none;
+}
+
+.comment-form-rating label {
+	display: none;
+}
+
+.comment-form-comment {
+	display: none;
+}
+
+.comment-form-author {
+	display: none;
+}
+
+.comment-form-email {
+	display: none;
+}
+
+.comment-form-cookies-consent {
+	display: none;
+}
+
+.woocommerce-tabs ul.tabs {
+	display: none;
+}
+
+.stars {
+	padding: 0 1rem;
+}
+
+// cart
+
+.cart {
+	button {
+		background-color: $color__background-button;
+		border: none;
+		text-transform: uppercase;
+		font: $font__main;
+		font-size: 0.75rem;
+		padding: 0.75rem 2rem;
+		width: 100%;
+		margin: 1rem 0;
+	}
 }

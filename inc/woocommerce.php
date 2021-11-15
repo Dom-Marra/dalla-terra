@@ -328,7 +328,7 @@ add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
 function woocommerce_template_product_description() {
 	wc_get_template( 'single-product/tabs/description.php' );
 }
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_product_description', 20 );
+// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_product_description', 20 );
 
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 
@@ -345,4 +345,15 @@ function woo_remove_my_account_links( $menu_links ){
 	
 	return $menu_links;
 	
+}
+
+add_filter( 'woocommerce_get_price_html', 'njengah_add_description_after_or_after_price' );
+
+function njengah_add_description_after_or_after_price($price){
+
+    $description = the_excerpt(); 
+		  
+		  
+	return $description . $price   ;
+		  
 }
