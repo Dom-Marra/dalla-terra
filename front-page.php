@@ -43,7 +43,7 @@ get_header();
 				<?php
 				$custom_cta = get_field('custom_call_to_action');
 				if( $custom_cta ): ?>
-					<div id="custom-cta-content">
+					<div class="custom-cta-content">
 						<?php echo wp_get_attachment_image( $custom_cta['background_image'], 'full' ); ?>
 						
 						<a href="<?php echo esc_url( $custom_cta['link'] ); ?>">

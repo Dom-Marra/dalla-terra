@@ -2,7 +2,7 @@
   display: flex; 
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+ padding: 0 1rem;
 
   background-color: $footer_dark;
   color:$main_font_beige ;
@@ -15,5 +15,8 @@
   }
   a:visited{
     color: $main_font_beige;
+  }
+  .contact-information{
+    text-align: center;
   }
 }
