@@ -61,7 +61,7 @@ get_header();
 						<div class="custom-cta-content">
 							<?php echo wp_get_attachment_image( $view_shop_CTA['background_image'], 'full' ); ?>
 							
-							<a href="<?php echo esc_url( $view_shop_CTA['link']['url'] ); ?>">
+							<a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>">
 								<?php echo esc_html( $view_shop_CTA['button_text']); ?>
 							</a>
 							
