@@ -15,4 +15,12 @@
 		padding: 0 1rem 2rem;
 		min-height: calc(100vh - #{$header-height});
 	}
+
+	&.page-id-3,
+	&.page-id-15 {
+		.site-main {
+			max-width: 65rem;
+			margin: auto;
+		}
+	}
 }
