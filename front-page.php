@@ -116,6 +116,7 @@ get_header();
 		</section>
 	
 		<section class="categories-section-home">
+			<h2>Our Categories</h2>
 			<?php
 				$terms = get_field('categories');
 
