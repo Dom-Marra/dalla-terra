@@ -74,6 +74,48 @@ ul.products {
 			margin: 0.5rem auto;
 			display: block;
 			@include cta-button;
+
+			&.loading,
+			&.added {
+				position: relative;
+
+				&::after {
+					background-color: white;
+					position: absolute;
+					height: 100%;
+					width: 100%;
+					top: 0;
+					left: 0;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: bold;
+					opacity: 0;
+				}
+			}
+
+			&.added::after {
+				content: '\2713';
+				animation: adding 1s ease-in-out;
+			}
+
+			&.loading::after {
+				content: 'Adding';
+				font-weight: normal;
+				opacity: 1;
+			}
+
+			@keyframes adding {
+				0% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
 		}
 	}
 }
