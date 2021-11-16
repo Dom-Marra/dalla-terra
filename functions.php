@@ -299,3 +299,8 @@ add_filter( 'wc_product_sku_enabled', '__return_false' );
 
 // hide breadcrumbs
 // remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+
+function yoast_to_bottom(){
+	return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
