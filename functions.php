@@ -297,9 +297,6 @@ function add_search_box_to_menu( $items, $args ) {
 // hide sku on product page
 add_filter( 'wc_product_sku_enabled', '__return_false' );
 
-// hide breadcrumbs
-// remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
-
 function yoast_to_bottom(){
 	return 'low';
 }
