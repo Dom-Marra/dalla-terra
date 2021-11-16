@@ -299,3 +299,20 @@ add_filter( 'wc_product_sku_enabled', '__return_false' );
 
 // hide breadcrumbs
 // remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+
+function my_login_logo() { 
+	wp_enqueue_style(
+		'login-styles',
+		get_template_directory_uri() . '/login-styles.css',
+	);
+}
+add_action( 'login_enqueue_scripts', 'my_login_logo' ); 
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Dalla Terra';
+}
+add_filter( 'login_headertext', 'my_login_logo_url_title' );
