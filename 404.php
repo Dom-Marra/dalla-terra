@@ -31,11 +31,6 @@ get_header();
 					echo '<a href="https://dallaterra.bcitwebdeveloper.ca/shop/">Back to Shop</a>';
 					?>
 				</div>
-
-
-
-
-
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 

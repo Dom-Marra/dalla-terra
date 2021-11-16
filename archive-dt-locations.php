@@ -13,15 +13,14 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php if ( have_posts() ) : ?>
-
 			<header class="page-header">
 				<?php
-					if ( get_field('title', 'option') ) : ?>
+					if ( function_exists('get_field') && get_field('title', 'option') ) : ?>
 						<h1><?php echo get_field('title', 'option'); ?></h1>
 					<?php else : ?>
 						<h1><?php echo 'Locations'; ?></h1>
 				<?php endif; 
-					if ( get_field('introduction', 'option') ) :
+					if (function_exists('get_field') && get_field('introduction', 'option') ) :
 						echo get_field('introduction', 'option');
 					endif;
 				?>
@@ -80,8 +79,13 @@ get_header();
 						<h2><?php the_title() ?></h2>
 						
 						<?php
-							$address = get_field('address');
-							$phone = get_field('phone_number');
+							$address;
+							$phone;
+							
+							if (function_exists('get_field')) :
+								$address = get_field('address');
+								$phone = get_field('phone_number');
+							endif;
 
 							if ($address || $phone): ?>
 								<address>
@@ -91,6 +95,8 @@ get_header();
 									<?php endif ?>
 								</address>
 						<?php endif;
+						
+						if (function_exists('have_rows')) :
 							if( have_rows('store_hours') ): ?>
 
 								<table>
@@ -108,7 +114,8 @@ get_header();
 										<?php endwhile; ?>
 									</tbody>
 								</table>
-						<?php endif; ?>
+						<?php endif; 
+						endif; ?>
 						<button class="expand-btn">See More</button>
 					</section>
 				<?php endwhile; ?>
