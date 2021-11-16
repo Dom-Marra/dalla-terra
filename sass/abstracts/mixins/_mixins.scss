@@ -21,9 +21,9 @@
 	&:focus,
 	&:focus-within,
 	&:focus-visible {
-		background-color: $header_text_color;
+		background-color: $color__link-hover;
 		color: white;
-		border: 1px solid darken($header_text_color, 25%);
+		border: 1px solid darken($color__link-hover, 25%);
 		outline: none;
 		cursor: pointer;
 	}
