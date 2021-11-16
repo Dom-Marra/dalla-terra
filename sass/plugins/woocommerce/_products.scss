@@ -13,6 +13,10 @@ ul.products {
 				height: calc(100% - 3rem);
 			}
 		}
+
+		.added_to_cart {
+			display: none;
+		}
 	
 		.woocommerce-LoopProduct-link {
 			display: grid;

@@ -20,9 +20,9 @@
                         @include dt-normal-button;
 
                         &.toggled {
-                            background-color: $header_text_color;
+                            background-color: $color__link-hover;
                             color: white;
-                            border-color: darken($header_text_color, 25%);
+                            border-color: darken($color__link-hover, 25%);
                         }
                     }
                 }

@@ -304,3 +304,19 @@ function yoast_to_bottom(){
 	return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
+function my_login_logo() { 
+	wp_enqueue_style(
+		'login-styles',
+		get_template_directory_uri() . '/login-styles.css',
+	);
+}
+add_action( 'login_enqueue_scripts', 'my_login_logo' ); 
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Dalla Terra';
+}
+add_filter( 'login_headertext', 'my_login_logo_url_title' );
