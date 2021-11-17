@@ -62,6 +62,7 @@ get_header();
 						$view_shop_CTA = get_field('view_shop_cta');
 						if( $view_shop_CTA ): ?>
 							<div class="custom-cta-content">
+								<h2><?php echo esc_html( $view_shop_CTA['hero_text']); ?></h2>
 								<?php echo wp_get_attachment_image( $view_shop_CTA['background_image'], 'full' ); ?>
 								
 								<a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>">
