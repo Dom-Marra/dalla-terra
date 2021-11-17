@@ -52,10 +52,10 @@ get_header();
 								<p><?php echo $address; ?></p>
 							<?php endif; ?>
 							<?php if ($email) : ?>
-								<p><?php echo $email; ?></p>
+								<a href="mailto:<?php echo $email; ?>"><p><?php echo $email; ?></p></a>
 							<?php endif; ?>
 							<?php if ($phone) : ?>
-								<p><?php echo $phone; ?></p>
+								<a href="tel:<?php echo $phone; ?>"><p><?php echo $phone; ?></p></a>
 							<?php endif; ?>
 						</address>
 					</section>

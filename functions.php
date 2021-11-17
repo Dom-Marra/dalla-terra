@@ -284,7 +284,7 @@ function add_search_box_to_menu( $items, $args ) {
     if( $args->theme_location == 'header' ) :
 
 		return $items 	. '<li class="menu-item">'
-						. '<button id="search" class="search" aria-label="search"><i data-feather="search"></i></button>'
+						. '<button title="search" id="search" class="search" aria-label="search"><i data-feather="search"></i></button>'
 						. get_product_search_form($echo)
 						. '</li>';
 

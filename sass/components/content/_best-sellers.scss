@@ -42,8 +42,10 @@
                 @include cta-button;
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 cursor: pointer;
+                outline: none;
 
                 .product-bg {
                     height: 100%;

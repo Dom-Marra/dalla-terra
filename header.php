@@ -52,8 +52,8 @@
 		</nav><!-- #site-main-navigation -->
 
 		<nav id="hamburger-navigation" class="hamburger-navigation">
-			<button class="menu-toggle open" aria-label="open menu" aria-controls="hamburger-menu" aria-expanded="false"><i data-feather="menu"></i></button>
-			<button class="menu-toggle close" aria-label="close menu" aria-controls="hamburger-menu" aria-expanded="false"><i data-feather="x"></i></button>
+			<button title="open menu" class="menu-toggle open" aria-label="open menu" aria-controls="hamburger-menu" aria-expanded="false"><i data-feather="menu"></i></button>
+			<button title="close menu" class="menu-toggle close" aria-label="close menu" aria-controls="hamburger-menu" aria-expanded="false"><i data-feather="x"></i></button>
 
 			<?php
 			wp_nav_menu(

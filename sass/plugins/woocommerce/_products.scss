@@ -8,10 +8,15 @@ ul.products {
 		margin-bottom: 2em;
 		padding: 1rem;
 
-		&:hover {
+		&:hover,
+		&:focus-within {
 			.product-bg {
 				height: calc(100% - 3rem);
 			}
+		}
+
+		a:focus {
+			outline: none;
 		}
 
 		.added_to_cart {

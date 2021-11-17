@@ -60,9 +60,8 @@ get_header();
                             <ul>
                                 <?php foreach( $images as $image ): ?>
                                     <li>
-                                        <a href="<?php echo $image['url']; ?>">
+                                        <?php echo $image['url']; ?>
                                         <?php echo wp_get_attachment_image($image, 'full' ); ?>
-                                        </a>
                                         <p><?php echo $image['caption']; ?></p>
                                     </li>
                                 <?php endforeach; ?>
@@ -131,9 +130,8 @@ get_header();
                                 <ul>
                                     <?php foreach( $images as $image ): ?>
                                         <li>
-                                            <a href="<?php echo $image['url']; ?>">
-                                                <?php echo wp_get_attachment_image($image, 'full' ); ?>
-                                            </a>
+                                            <?php echo $image['url']; ?>
+                                            <?php echo wp_get_attachment_image($image, 'full' ); ?>
                                             <p><?php echo $image['caption']; ?></p>
                                         </li>
                                     <?php endforeach; ?>

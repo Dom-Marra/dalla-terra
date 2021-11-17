@@ -35,10 +35,10 @@
 					<p class="address"><?php echo $address; ?></p>
 				<?php endif; ?>
 				<?php if ($email) : ?>
-					<p class="email"><?php echo $email; ?></p>
+					<a href="mailto:<?php echo $email; ?>"><p class="email"><?php echo $email; ?></p></a>
 				<?php endif; ?>
 				<?php if ($phone) : ?>
-					<p class="phone"><?php echo $phone; ?></p>
+					<a href="tel:<?php echo $phone; ?>"><p class="phone"><?php echo $phone; ?></p></a>
 				<?php endif; ?>
 			</address>
 		<?php endif; ?>
