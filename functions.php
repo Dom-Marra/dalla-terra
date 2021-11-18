@@ -330,3 +330,15 @@ function fwd_block_editor_templates() {
     } 
 }
 add_action( 'init', 'fwd_block_editor_templates' );
+
+function display_tutorial_content() { ?>
+	
+	<a href="<?php echo wp_get_attachment_url( 368 ); ?>">View Tutorial</a> 
+
+	<?php
+}
+
+function wporg_add_dashboard_widgets() {
+    wp_add_dashboard_widget( 'tutorial', 'Tutorial', 'display_tutorial_content');
+}
+add_action( 'wp_dashboard_setup', 'wporg_add_dashboard_widgets' );
