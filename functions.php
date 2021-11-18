@@ -245,7 +245,7 @@ require get_template_directory() . '/inc/cpt-taxonomy.php';
 //Change Block Editor To Classic Editor
 function dalla_terra_classic_editors( $use_block_editor, $post ) {
 
-    $page_ids = array( 20, 24, 111, 18, 26 );
+    $page_ids = array( 20, 24, 18, 26 );
 
     if ( in_array( $post->ID, $page_ids ) ) {
         return false;
@@ -317,3 +317,16 @@ function my_login_logo_url_title() {
     return 'Dalla Terra';
 }
 add_filter( 'login_headertext', 'my_login_logo_url_title' );
+
+//Set Block Templates
+function fwd_block_editor_templates() {
+
+    if ( isset( $_GET['post'] ) && ('111' == $_GET['post'] || '11' == $_GET['post'])) {
+        $post_type_object = get_post_type_object( 'page' );
+        $post_type_object->template = array(
+			array( '' ),
+		);
+		$post_type_object->template_lock = 'all';
+    } 
+}
+add_action( 'init', 'fwd_block_editor_templates' );
